@@ -11,7 +11,7 @@ import javax.swing.JApplet;
 
 public class cse360 extends JApplet
 {  
-	cse360()  
+	public cse360()
 	{  
 		String strInput = "";
 		int numLines = 0;
