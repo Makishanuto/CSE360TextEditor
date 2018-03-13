@@ -3,6 +3,11 @@ import javax.swing.*;
 
 import java.awt.event.*;
 import javax.swing.JApplet;
+import java.awt.*;  
+import javax.swing.*;
+
+import java.awt.event.*;
+import javax.swing.JApplet;
 
 public class cse360 extends JApplet
 {  
@@ -28,6 +33,24 @@ public class cse360 extends JApplet
 		open.setFont(new Font("", Font.BOLD, 40));
 		open.setForeground(Color.white);
 		open.setBackground(Color.black);
+		
+		
+		//Change color when hovering
+		open.addMouseListener(new java.awt.event.MouseAdapter()
+		{
+			public void mouseEntered(java.awt.event.MouseEvent evt)
+			{
+				open.setBackground(Color.gray);
+			}
+			
+			public void mouseExited(java.awt.event.MouseEvent evt)
+			{
+		        open.setBackground(Color.black);
+		    }
+		});
+		
+		
+		//Do when clicked
 		open.addActionListener(new ActionListener()
 		{  
 			public void actionPerformed(ActionEvent e)
@@ -41,6 +64,22 @@ public class cse360 extends JApplet
 		save.setFont(new Font("", Font.BOLD, 40));
 		save.setForeground(Color.white);
 		save.setBackground(Color.black);
+		
+		//Change color when hovering
+		save.addMouseListener(new java.awt.event.MouseAdapter()
+		{
+			public void mouseEntered(java.awt.event.MouseEvent evt)
+			{
+				save.setBackground(Color.gray);
+			}
+					
+			public void mouseExited(java.awt.event.MouseEvent evt)
+			{
+		        save.setBackground(Color.black);
+		    }
+		});
+		
+		//Do when clicked
 		save.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
