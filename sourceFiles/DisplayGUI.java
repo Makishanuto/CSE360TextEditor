@@ -27,6 +27,16 @@ public class DisplayGUI extends JApplet
 
         ArrayList<String> stringsForUse = new ArrayList<String>();
 
+        
+        
+        JFrame newmaster = new JFrame();
+        newmaster.setLayout(new GridLayout(1,1));
+        newmaster.setSize(800, 400);
+        newmaster.setVisible(true);
+        newmaster.getContentPane().setBackground(Color.lightGray);
+        
+       
+        
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
         master.setSize(500, 400);
@@ -203,6 +213,9 @@ public class DisplayGUI extends JApplet
         frame.add(length);
         frame.add(lLength);
         frame.add(field);
+        
+        
+       // newmaster.add(master);
     }
 
     public void paint(Graphics g)
