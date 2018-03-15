@@ -42,16 +42,16 @@ public class DisplayGUI extends JApplet
         save.setBackground(Color.black);
 
         JButton rightJ = new JButton("Right Justification");
-        rightJ.setBounds(50,100,95,30);
-        rightJ.setFont(new Font("", Font.BOLD, 40));
-        rightJ.setForeground(Color.white);
-        rightJ.setBackground(Color.black);
+        open.setBounds(50,100,95,30);
+        open.setFont(new Font("", Font.BOLD, 40));
+        open.setForeground(Color.white);
+        open.setBackground(Color.black);
 
         JButton leftJ = new JButton("Left Justification");
-        leftJ.setBounds(50,100,95,30);
-        leftJ.setFont(new Font("", Font.BOLD, 40));
-        leftJ.setForeground(Color.white);
-        leftJ.setBackground(Color.black);
+        open.setBounds(50,100,95,30);
+        open.setFont(new Font("", Font.BOLD, 40));
+        open.setForeground(Color.white);
+        open.setBackground(Color.black);
 
         //Create Labels
         JLabel input = new JLabel("Input File");
@@ -117,24 +117,18 @@ public class DisplayGUI extends JApplet
         //Add buttons to frame
         frame.add(open);
         frame.add(save);
-        frame.add(new JPanel());
 
         //Add labels to frame
         frame.add(input);
         frame.add(fileName);
-        frame.add(new JPanel());
         frame.add(lines);
         frame.add(lNumLines);
-        frame.add(new JPanel());
         frame.add(removed);
         frame.add(lRemoved);
-        frame.add(new JPanel());
         frame.add(count);
         frame.add(lCount);
-        frame.add(new JPanel());
         frame.add(wordsPerLine);
         frame.add(lWordsPerLine);
-        frame.add(new JPanel());
         frame.add(length);
         frame.add(lLength);
 
