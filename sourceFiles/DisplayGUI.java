@@ -41,24 +41,59 @@ public class DisplayGUI extends JApplet
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
-
-        JTextField field = new JTextField();
-
-
-        for(int i = 0; i < stringsForUse.size(); i++)
-        {
-            int x;
-            for(int j = 0; j < stringsForUse.size(); j++){
-                x = (stringsForUse.get(j)).length();
-               // System.out.println("-%" + (80-x) + "s", i);
-            }
-        }
-
+        
         JButton save = new JButton("Save File");
         save.setBounds(50, 100, 95, 30);
         save.setFont(new Font("", Font.BOLD, 40));
         save.setForeground(Color.white);
         save.setBackground(Color.black);
+
+        JButton rightJ = new JButton("Right Justification");
+        open.setBounds(50,100,95,30);
+        open.setFont(new Font("", Font.BOLD, 40));
+        open.setForeground(Color.white);
+        open.setBackground(Color.black);
+        
+        JButton leftJ = new JButton("Left Justification");
+        open.setBounds(50,100,95,30);
+        open.setFont(new Font("", Font.BOLD, 40));
+        open.setForeground(Color.white);
+        open.setBackground(Color.black);
+        
+        JTextArea area = new JTextArea(10, 10);
+        JScrollPane scrollPane = new JScrollPane(area); 
+        area.setEditable(false);
+        
+        rightJ.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+            {
+        		
+        		if(e.getSource() == "rightJ") {
+        			String combine = "%80s";
+        			for (int i = 0; i < stringsForUse.size(); i++){
+        				combine += stringsForUse.get(i) + "\n";
+        	        	System.out.printf(combine);
+        			}
+        			
+                }
+            }
+        });
+        
+        leftJ.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+            {
+        		
+        		if(e.getSource() == "rightJ") {
+        			String combine = "%-80s";
+        			for (int i = 0; i < stringsForUse.size(); i++){
+        				combine += stringsForUse.get(i) + "\n";
+        	        	area.append(combine);
+        			}
+                }
+            }
+        });
 
 
         // File Chooser
@@ -202,7 +237,9 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
-        frame.add(field);
+        frame.add(area);
+        frame.add(rightJ);
+        frame.add(leftJ);
     }
 
     public void paint(Graphics g)
