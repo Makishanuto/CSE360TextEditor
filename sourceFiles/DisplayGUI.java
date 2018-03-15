@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class DisplayGUI extends JApplet
 {
-
     public DisplayGUI ()
     {
         ArrayList<String> stringsForUse = new ArrayList<String>();
@@ -53,10 +52,6 @@ public class DisplayGUI extends JApplet
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
-
-        JTextArea area = new JTextArea(10, 10);
-        JScrollPane scrollPane = new JScrollPane(area);
-        area.setEditable(false);
 
         //Create Labels
         JLabel input = new JLabel("Input File");
@@ -137,20 +132,17 @@ public class DisplayGUI extends JApplet
         frame.add(length);
         frame.add(lLength);
 
-        frame.add(area);
         frame.add(rightJ);
         frame.add(leftJ);
+        final JFileChooser fileChooser  = new JFileChooser();
+        JLabel leftJBool = new JLabel("true");
 
         rightJ.addActionListener(new ActionListener()
         {
         	public void actionPerformed(ActionEvent e)
             {
         		if(e.getSource() == "rightJ") {
-        			String combine = "%80s";
-        			for (int i = 0; i < stringsForUse.size(); i++){
-        				combine += stringsForUse.get(i) + "\n";
-        	        	System.out.printf(combine);
-        			}
+                    leftJBool.setText("false");
                 }
             }
         });
@@ -159,13 +151,8 @@ public class DisplayGUI extends JApplet
         {
         	public void actionPerformed(ActionEvent e)
             {
-
         		if(e.getSource() == "rightJ") {
-        			String combine = "%-80s";
-        			for (int i = 0; i < stringsForUse.size(); i++){
-        				combine += stringsForUse.get(i) + "\n";
-        	        	area.append(combine);
-        			}
+        			leftJBool.setText("true");
                 }
             }
         });
@@ -180,7 +167,7 @@ public class DisplayGUI extends JApplet
         }
 
         // File Chooser
-        final JFileChooser fileChooser  = new JFileChooser();
+
 
         //Change color when hovering
         open.addMouseListener(new java.awt.event.MouseAdapter()
@@ -215,8 +202,8 @@ public class DisplayGUI extends JApplet
                     Scanner userInput = null;
                     try {
                         userInput = new Scanner(readInputtedFile);
-                    } catch (FileNotFoundException e1) {
-                        e1.printStackTrace();
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
                     }
                     while(userInput.hasNextLine())
                       {
@@ -252,10 +239,10 @@ public class DisplayGUI extends JApplet
                       {
                           int next = i+1;
                           String possibleOutput = "";
-                          possibleOutput +=  (stringsForUse.get(i)) + (stringsForUse.get(next));
+                          possibleOutput +=  (stringsForUse.get(i)) + " " + (stringsForUse.get(next));
                           if(possibleOutput.length() < 80)
                           {
-                              String toModify = stringsForUse.get(i) + (stringsForUse.get(next));
+                              String toModify = stringsForUse.get(i) + " " + (stringsForUse.get(next));
                               stringsForUse.set(i, toModify);
                               i++; // Skip to the next one
                           }
@@ -297,10 +284,31 @@ public class DisplayGUI extends JApplet
                 int checkIfFileChosen = fileChooser.showSaveDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
+                    try {
+                        File writeFile = new File(fileChooser.getSelectedFile()+".txt");
+                        PrintWriter outputText = new PrintWriter(writeFile);
+                        if(leftJBool.getText() == "true") {
+                			for (int i = 0; i < stringsForUse.size(); i++){
+                                outputText.printf("%-80s", stringsForUse.get(i));
+                                outputText.println();
+                			}
+                			outputText.close();
+                        }
+                        else {
+                            for (int i = 0; i < stringsForUse.size(); i++){
+                                outputText.printf("%80s", stringsForUse.get(i));
+                                outputText.println();
+                            }
+                            outputText.close();
+                        }
+
+                    } catch(Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
                 else
                 {
-
+                    System.out.println("User cancelled.");
                 }
             }
         });
