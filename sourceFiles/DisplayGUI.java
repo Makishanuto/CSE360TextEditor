@@ -28,12 +28,13 @@ public class DisplayGUI extends JApplet
         static ArrayList<String> stringsForUse = new ArrayList<String>();
 
         //Create JFrame
-        JFrame frame = new JFrame("Text Analyzer");
-        frame.setSize(500, 400);
-        frame.setLayout(new GridLayout(7, 2));
-        frame.setVisible(true);
-        frame.getContentPane().setBackground(Color.lightGray);
+        JFrame master = new JFrame("Text Analyzer");
+        master.setSize(500, 400);
+        master.setLayout(new GridLayout(7, 2));
+        master.setVisible(true);
+        master.getContentPane().setBackground(Color.lightGray);
 
+        Container frame = master.getContentPane();
         //Create buttons
         JButton open = new JButton("Open File");
         open.setBounds(50,100,95,30);
@@ -41,6 +42,7 @@ public class DisplayGUI extends JApplet
         open.setForeground(Color.white);
         open.setBackground(Color.black);
 
+<<<<<<< HEAD
         JTextField field = new JTextField();
         frame.add(field);
         
@@ -52,6 +54,13 @@ public class DisplayGUI extends JApplet
                // System.out.println("-%" + (80-x) + "s", i);
             }
         }
+=======
+        JButton save = new JButton("Save File");
+        save.setBounds(50, 100, 95, 30);
+        save.setFont(new Font("", Font.BOLD, 40));
+        save.setForeground(Color.white);
+        save.setBackground(Color.black);
+>>>>>>> df97636ae38e09a91dd1a4d987469f1db760e526
 
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
@@ -76,8 +85,8 @@ public class DisplayGUI extends JApplet
         {
             public void actionPerformed(ActionEvent e)
             {
-                  int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
-                  if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
+                int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
+                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                   {
                       File readInputtedFile = fileChooser.getSelectedFile();
                       Scanner userInput = new Scanner(System.in);
@@ -90,15 +99,11 @@ public class DisplayGUI extends JApplet
                   else {
                       System.out.println("Option canelled lmao");
                   }
-                  //Open file
+                  //Open file */
               }
         });
 
-        JButton save = new JButton("Save File");
-        save.setBounds(50, 100, 95, 30);
-        save.setFont(new Font("", Font.BOLD, 40));
-        save.setForeground(Color.white);
-        save.setBackground(Color.black);
+
 
         //Change color when hovering
         save.addMouseListener(new java.awt.event.MouseAdapter()
