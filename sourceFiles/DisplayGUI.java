@@ -43,16 +43,16 @@ public class DisplayGUI extends JApplet
         save.setBackground(Color.black);
 
         JButton rightJ = new JButton("Right Justification");
-        open.setBounds(50,100,95,30);
-        open.setFont(new Font("", Font.BOLD, 40));
-        open.setForeground(Color.white);
-        open.setBackground(Color.black);
+        rightJ.setBounds(50,100,95,30);
+        rightJ.setFont(new Font("", Font.BOLD, 40));
+        rightJ.setForeground(Color.white);
+        rightJ.setBackground(Color.black);
 
         JButton leftJ = new JButton("Left Justification");
-        open.setBounds(50,100,95,30);
-        open.setFont(new Font("", Font.BOLD, 40));
-        open.setForeground(Color.white);
-        open.setBackground(Color.black);
+        leftJ.setBounds(50,100,95,30);
+        leftJ.setFont(new Font("", Font.BOLD, 40));
+        leftJ.setForeground(Color.white);
+        leftJ.setBackground(Color.black);
 
         JTextArea area = new JTextArea(10, 10);
         JScrollPane scrollPane = new JScrollPane(area);
