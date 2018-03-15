@@ -27,6 +27,10 @@ public class Main extends JApplet
         {
           stringsForUse.add(userInput.nextLine());
         }
+        for(int i = 0, i < /*array*/; i++)
+        {
+            System.out.printf("-%x", i);
+        }
       }
       DisplayGUI file = new DisplayGUI();
     }
