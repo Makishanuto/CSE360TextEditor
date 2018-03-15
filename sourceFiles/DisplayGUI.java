@@ -42,11 +42,24 @@ public class DisplayGUI extends JApplet
         open.setForeground(Color.white);
         open.setBackground(Color.black);
 
+        JTextField field = new JTextField();
+
+
+        for(int i = 0; i < stringsForUse.size(); i++)
+        {
+            int x;
+            for(int j = 0; j < stringsForUse.size(); j++){
+                x = (stringsForUse.get(j)).length();
+               // System.out.println("-%" + (80-x) + "s", i);
+            }
+        }
+
         JButton save = new JButton("Save File");
         save.setBounds(50, 100, 95, 30);
         save.setFont(new Font("", Font.BOLD, 40));
         save.setForeground(Color.white);
         save.setBackground(Color.black);
+
 
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
@@ -189,12 +202,7 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
-    }
-
-    public class readOutput extends JFrame{
-
-    	JTextField field = new JTextField();
-
+        frame.add(field);
     }
 
     public void paint(Graphics g)
