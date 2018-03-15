@@ -170,7 +170,6 @@ public class DisplayGUI extends JApplet
             }
         });
 
-        JTextField field = new JTextField();
 
         for(int i = 0; i < stringsForUse.size(); i++)
         {
@@ -229,12 +228,12 @@ public class DisplayGUI extends JApplet
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
-                              String[] listOfWords = input.split("\\s+");
-                              numCount += listOfWords.length();
+                              String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
+                              numCount += listOfWords.length;
                           }
                       }
                       numWordsPerLine = numCount / stringsForUse.size();
-                      
+
                       for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
                       {
                           if((stringsForUse.get(i)).length() > 80) {
@@ -295,7 +294,14 @@ public class DisplayGUI extends JApplet
         {
             public void actionPerformed(ActionEvent e)
             {
+                int checkIfFileChosen = fileChooser.showSaveDialog(DisplayGUI.this);
+                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
+                {
+                }
+                else
+                {
 
+                }
             }
         });
 
