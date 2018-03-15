@@ -25,7 +25,7 @@ public class DisplayGUI extends JApplet
         int numWordsPerLine = 0;
         int numLength = 0;
 
-        static ArrayList<String> stringsForUse = new ArrayList<String>();
+        ArrayList<String> stringsForUse = new ArrayList<String>();
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
@@ -73,32 +73,20 @@ public class DisplayGUI extends JApplet
             {
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
-                  {
+                {
                       File readInputtedFile = fileChooser.getSelectedFile();
                       Scanner userInput = new Scanner(System.in);
                       while(userInput.hasNextLine())
                       {
                           stringsForUse.add(userInput.nextLine());
                       }
-                      for(int i = 0; i < stringsForUse.size(); i++)
-                      {
-                          int x;
-                          for(int j = 0; j < stringsForUse.size(); j++){
-
-                              x = stringsForUse[j].length();
-                              System.out.println("-%" + (80-x) + "s", i);
-
-                          }
-                      }
-                  }
-                  else {
-                      System.out.println("Option canelled lmao");
-                  }
+                 }
+                 else { // User cancelled
+                      System.out.println("Option cancelled lmao");
+                 }
                   //Open file */
               }
         });
-
-
 
         //Change color when hovering
         save.addMouseListener(new java.awt.event.MouseAdapter()
@@ -201,14 +189,12 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
-        
-        
     }
-    
+
     public class readOutput extends JFrame{
-    	
+
     	JTextField field = new JTextField();
-    	
+
     }
 
     public void paint(Graphics g)
