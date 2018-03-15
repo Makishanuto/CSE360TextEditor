@@ -20,16 +20,10 @@ public class DisplayGUI extends JApplet
     {
         ArrayList<String> stringsForUse = new ArrayList<String>();
 
-        JFrame newmaster = new JFrame();
-        newmaster.setLayout(new GridLayout(1,1));
-        newmaster.setSize(800, 400);
-        newmaster.setVisible(true);
-        newmaster.getContentPane().setBackground(Color.lightGray);
-
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
-        master.setSize(500, 400);
-        master.setLayout(new GridLayout(7, 2));
+        master.setSize(1028, 736);
+        master.setLayout(new GridLayout(8, 2));
         master.setVisible(true);
         master.getContentPane().setBackground(Color.lightGray);
 
@@ -63,143 +57,6 @@ public class DisplayGUI extends JApplet
         JTextArea area = new JTextArea(10, 10);
         JScrollPane scrollPane = new JScrollPane(area);
         area.setEditable(false);
-
-        rightJ.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-            {
-        		if(e.getSource() == "rightJ") {
-        			String combine = "%80s";
-        			for (int i = 0; i < stringsForUse.size(); i++){
-        				combine += stringsForUse.get(i) + "\n";
-        	        	System.out.printf(combine);
-        			}
-                }
-            }
-        });
-
-        leftJ.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-            {
-
-        		if(e.getSource() == "rightJ") {
-        			String combine = "%-80s";
-        			for (int i = 0; i < stringsForUse.size(); i++){
-        				combine += stringsForUse.get(i) + "\n";
-        	        	area.append(combine);
-        			}
-                }
-            }
-        });
-
-        JTextField field = new JTextField();
-
-        for(int i = 0; i < stringsForUse.size(); i++)
-        {
-            int x;
-            for(int j = 0; j < stringsForUse.size(); j++){
-                x = (stringsForUse.get(j)).length();
-            }
-        }
-
-        // File Chooser
-        final JFileChooser fileChooser  = new JFileChooser();
-
-        //Change color when hovering
-        open.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                open.setBackground(Color.gray);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                open.setBackground(Color.black);
-            }
-        });
-
-
-        //Do when clicked
-        open.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                int numLines = 0;
-                int numLinesRemoved = 0;
-                int numCount = 0;
-                int numWordsPerLine = 0;
-                int numLength = 0;
-
-                int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
-                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
-                {
-                      File readInputtedFile = fileChooser.getSelectedFile();
-                      String strInput = readInputtedFile.getName();
-                      Scanner userInput = new Scanner(System.in);
-                      while(userInput.hasNextLine())
-                      {
-                          stringsForUse.add(userInput.nextLine());
-                          numLines++;
-                      }
-
-                      for(int i = 0; i < stringsForUse.size(); i++) // Check for and remove blank lines
-                      {
-                          if((stringsForUse.get(i)).length() == 0) {
-                              stringsForUse.remove(i);
-                              numLinesRemoved++;
-                          }
-                      }
-
-                      for(int i = 0; i < stringsForUse.size(); i++) // Concatenation
-                      {
-                          int next = i+1;
-                          String possibleOutput = "";
-                          possibleOutput +=  (stringsForUse.get(i)) + (stringsForUse.get(next));
-                          if(possibleOutput.length() < 80)
-                          {
-                              String toModify = stringsForUse.get(i) + (stringsForUse.get(next));
-                              stringsForUse.set(i, toModify);
-                              i++; // Skip to the next one
-                          }
-                      }
-                      fileName.setText(strInput);
-                      lNumLines.setText(Integer.toString(numLines));
-                      lRemoved.setText(Integer.toString(numLinesRemoved));
-                      lCount.setText(Integer.toString(numCount));
-                      lWordsPerLine.setText(Integer.toString(numWordsPerLine));
-                      lLength.setText(Integer.toString(numLength));
-                 }
-                 else { // User cancelled
-                      System.out.println("Option cancelled lmao");
-                 }
-                  //Open file */
-              }
-        });
-
-        //Change color when hovering
-        save.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                save.setBackground(Color.gray);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                save.setBackground(Color.black);
-            }
-        });
-
-        //Do when clicked
-        save.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                //Save file
-            }
-        });
 
         //Create Labels
         JLabel input = new JLabel("Input File");
@@ -284,7 +141,165 @@ public class DisplayGUI extends JApplet
         frame.add(rightJ);
         frame.add(leftJ);
 
-        frame.add(field);
+        rightJ.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+            {
+        		if(e.getSource() == "rightJ") {
+        			String combine = "%80s";
+        			for (int i = 0; i < stringsForUse.size(); i++){
+        				combine += stringsForUse.get(i) + "\n";
+        	        	System.out.printf(combine);
+        			}
+                }
+            }
+        });
+
+        leftJ.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+            {
+
+        		if(e.getSource() == "rightJ") {
+        			String combine = "%-80s";
+        			for (int i = 0; i < stringsForUse.size(); i++){
+        				combine += stringsForUse.get(i) + "\n";
+        	        	area.append(combine);
+        			}
+                }
+            }
+        });
+
+        JTextField field = new JTextField();
+
+        for(int i = 0; i < stringsForUse.size(); i++)
+        {
+            int x;
+            for(int j = 0; j < stringsForUse.size(); j++){
+                x = (stringsForUse.get(j)).length();
+            }
+        }
+
+        // File Chooser
+        final JFileChooser fileChooser  = new JFileChooser();
+
+        //Change color when hovering
+        open.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                open.setBackground(Color.gray);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                open.setBackground(Color.black);
+            }
+        });
+
+
+        //Do when clicked
+        open.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                int numLines = 0;
+                int numLinesRemoved = 0;
+                int numCount = 0;
+                int numWordsPerLine = 0;
+                int numLength = 0;
+                int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
+                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
+                {
+                      File readInputtedFile = fileChooser.getSelectedFile();
+                      String strInput = readInputtedFile.getName();
+                    Scanner userInput = null;
+                    try {
+                        userInput = new Scanner(readInputtedFile);
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
+                    while(userInput.hasNextLine())
+                      {
+                          stringsForUse.add(userInput.nextLine());
+                          numLines++;
+                      }
+                      userInput.close();
+                      for(int i = 0; i < stringsForUse.size(); i++) // Check words
+                      {
+                          if((stringsForUse.get(i)).length() > 0)
+                          {
+                              String[] listOfWords = input.split("\\s+");
+                              numCount += listOfWords.length();
+                          }
+                      }
+                      numWordsPerLine = numCount / stringsForUse.size();
+                      
+                      for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
+                      {
+                          if((stringsForUse.get(i)).length() > 80) {
+
+                          }
+                      }
+                      for(int i = 0; i < stringsForUse.size(); i++) // Check for and remove blank lines
+                      {
+                          if((stringsForUse.get(i)).length() == 0) {
+                              stringsForUse.remove(i);
+                              numLinesRemoved++;
+                          }
+                      }
+
+                      for(int i = 0; i < stringsForUse.size()-1; i++) // Concatenation
+                      {
+                          int next = i+1;
+                          String possibleOutput = "";
+                          possibleOutput +=  (stringsForUse.get(i)) + (stringsForUse.get(next));
+                          if(possibleOutput.length() < 80)
+                          {
+                              String toModify = stringsForUse.get(i) + (stringsForUse.get(next));
+                              stringsForUse.set(i, toModify);
+                              i++; // Skip to the next one
+                          }
+                      }
+
+                      fileName.setText(strInput);
+                      lNumLines.setText(Integer.toString(numLines));
+                      lRemoved.setText(Integer.toString(numLinesRemoved));
+                      lCount.setText(Integer.toString(numCount));
+                      lWordsPerLine.setText(Integer.toString(numWordsPerLine));
+                      lLength.setText(Integer.toString(numLength));
+                 }
+                 else { // User cancelled
+                      System.out.println("Option cancelled lmao");
+                 }
+                  //Open file */
+              }
+        });
+
+        //Change color when hovering
+        save.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                save.setBackground(Color.gray);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                save.setBackground(Color.black);
+            }
+        });
+
+        //Do when clicked
+        save.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
+
+
 
 
        // newmaster.add(master);
