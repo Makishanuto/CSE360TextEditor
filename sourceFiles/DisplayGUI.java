@@ -82,7 +82,13 @@ public class DisplayGUI extends JApplet
                       }
                       for(int i = 0; i < stringsForUse.size(); i++)
                       {
-                          System.out.printf("-%x", i);
+                          int x;
+                          for(int j = 0; j < stringsForUse.size(); j++){
+
+                              x = stringsForUse[j].length();
+                              System.out.println("-%" + (80-x) + "s", i);
+
+                          }
                       }
                   }
                   else {
@@ -195,6 +201,14 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
+        
+        
+    }
+    
+    public class readOutput extends JFrame{
+    	
+    	JTextField field = new JTextField();
+    	
     }
 
     public void paint(Graphics g)
