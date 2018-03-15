@@ -25,7 +25,7 @@ public class DisplayGUI extends JApplet
         int numWordsPerLine = 0;
         int numLength = 0;
 
-        ArrayList<String> stringsForUse = new ArrayList<String>();
+        static ArrayList<String> stringsForUse = new ArrayList<String>();
 
         //Create JFrame
         JFrame frame = new JFrame("Text Analyzer");
@@ -41,10 +41,21 @@ public class DisplayGUI extends JApplet
         open.setForeground(Color.white);
         open.setBackground(Color.black);
 
+        JTextField field = new JTextField();
+        frame.add(field);
+        
+        for(int i = 0; i < stringsForUse.size(); i++)
+        {
+            int x;
+            for(int j = 0; j < stringsForUse.size(); j++){
+                x = (stringsForUse.get(j)).length();
+               // System.out.println("-%" + (80-x) + "s", i);
+            }
+        }
 
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
-
+        
         //Change color when hovering
         open.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -74,6 +85,7 @@ public class DisplayGUI extends JApplet
                       {
                           stringsForUse.add(userInput.nextLine());
                       }
+
                   }
                   else {
                       System.out.println("Option canelled lmao");
@@ -189,24 +201,9 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
-        
-        
+     
     }
-    
-   private void displayOutput{
-    	
-    	JTextField field = new JTextField();
-    	 
-    	for(int i = 0; i < stringsForUse.size(); i++)
-         {
-             int x;
-             for(int j = 0; j < stringsForUse.size(); j++){
-                 x = stringsForUse[j].length();
-                 System.out.println("-%" + (80-x) + "s", i);
-             }
-         }
-    }
-
+   
     public void paint(Graphics g)
     {
         //Draw background
