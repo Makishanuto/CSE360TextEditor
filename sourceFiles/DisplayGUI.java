@@ -220,6 +220,11 @@ public class DisplayGUI extends JApplet
                           }
                       }
                       numWordsPerLine = numCount / stringsForUse.size();
+                      int total = 0;
+                      for(int i = 0; i < stringsForUse.size(); i++) { // Line Length
+                          total += (stringsForUse.get(i)).length();
+                      }
+                      numLength = total / stringsForUse.size();
 
                       for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
                       {
