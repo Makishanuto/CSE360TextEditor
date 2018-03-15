@@ -25,7 +25,7 @@ public class DisplayGUI extends JApplet
         int numWordsPerLine = 0;
         int numLength = 0;
 
-        static ArrayList<String> stringsForUse = new ArrayList<String>();
+        ArrayList<String> stringsForUse = new ArrayList<String>();
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
@@ -42,7 +42,6 @@ public class DisplayGUI extends JApplet
         open.setForeground(Color.white);
         open.setBackground(Color.black);
 
-<<<<<<< HEAD
         JTextField field = new JTextField();
         frame.add(field);
         
@@ -54,13 +53,13 @@ public class DisplayGUI extends JApplet
                // System.out.println("-%" + (80-x) + "s", i);
             }
         }
-=======
+
         JButton save = new JButton("Save File");
         save.setBounds(50, 100, 95, 30);
         save.setFont(new Font("", Font.BOLD, 40));
         save.setForeground(Color.white);
         save.setBackground(Color.black);
->>>>>>> df97636ae38e09a91dd1a4d987469f1db760e526
+
 
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
