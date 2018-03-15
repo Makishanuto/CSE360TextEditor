@@ -17,22 +17,6 @@ public class Main extends JApplet
 {
     public static void main(String args[])
     {
-      ArrayList<String> stringsForUse = new ArrayList<String>();
-      try
-      {
-
-        Scanner userInput = new Scanner(System.in);
-        File readInputtedFile = new FileReader;
-        while(userInput.hasNextLine())
-        {
-          stringsForUse.add(userInput.nextLine());
-        }
-        for(int i = 0, i < /*array*/; i++)
-        {
-            System.out.printf("-%x", i);
-        }
-      }
-      DisplayGUI file = new DisplayGUI();
+        new DisplayGUI();
     }
-
 }
