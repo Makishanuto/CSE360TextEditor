@@ -122,18 +122,24 @@ public class DisplayGUI extends JApplet
         //Add buttons to frame
         frame.add(open);
         frame.add(save);
+        frame.add(new JPanel());
 
         //Add labels to frame
         frame.add(input);
         frame.add(fileName);
+        frame.add(new JPanel());
         frame.add(lines);
         frame.add(lNumLines);
+        frame.add(new JPanel());
         frame.add(removed);
         frame.add(lRemoved);
+        frame.add(new JPanel());
         frame.add(count);
         frame.add(lCount);
+        frame.add(new JPanel());
         frame.add(wordsPerLine);
         frame.add(lWordsPerLine);
+        frame.add(new JPanel());
         frame.add(length);
         frame.add(lLength);
 
