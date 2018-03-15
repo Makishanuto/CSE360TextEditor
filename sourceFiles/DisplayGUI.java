@@ -149,7 +149,7 @@ public class DisplayGUI extends JApplet
         			String combine = "%80s";
         			for (int i = 0; i < stringsForUse.size(); i++){
         				combine += stringsForUse.get(i) + "\n";
-        	        	System.out.printf(combine);
+        	        	area.append(combine);
         			}
                 }
             }
