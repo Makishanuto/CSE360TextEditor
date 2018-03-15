@@ -55,7 +55,10 @@ public class DisplayGUI extends JApplet
         {
             public void actionPerformed(ActionEvent e)
             {
-                //Open file
+                if(e.getSource() == open)
+                {
+                  int returnVal = fc
+                }//Open file
             }
         });
 

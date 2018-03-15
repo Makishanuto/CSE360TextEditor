@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5e1f9c8f-73ae-4247-9611-f1b86cca3385" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CSE360Proj.iml" afterPath="$PROJECT_DIR$/CSE360Proj.iml" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/DisplayGUI$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/DisplayGUI$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/DisplayGUI$3.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/DisplayGUI$4.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/DisplayGUI.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/outputs/production/CSE360Proj/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DisplayGUI.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/sourceFiles/Main.java" afterPath="$PROJECT_DIR$/sourceFiles/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -247,12 +239,12 @@
       <option name="presentableId" value="Default" />
       <updated>1520974080032</updated>
       <workItem from="1520974083658" duration="548000" />
-      <workItem from="1521130987864" duration="1316000" />
+      <workItem from="1521130987864" duration="1420000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1864000" />
+    <option name="totallyTimeSpent" value="1968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
