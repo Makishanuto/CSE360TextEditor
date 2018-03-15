@@ -24,6 +24,11 @@ public class Main extends JApplet
 
 
         while(userInput.hasNextLine())
+            
+            //for(int i = 0, i < /*array*/; i++){
+                
+             //   System.out.printf("-%x", i);
+           // }
       }
         new DisplayGUI();
     }
