@@ -20,16 +20,12 @@ public class DisplayGUI extends JApplet
     {
         ArrayList<String> stringsForUse = new ArrayList<String>();
 
-        
-        
         JFrame newmaster = new JFrame();
         newmaster.setLayout(new GridLayout(1,1));
         newmaster.setSize(800, 400);
         newmaster.setVisible(true);
         newmaster.getContentPane().setBackground(Color.lightGray);
-        
-       
-        
+
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
         master.setSize(500, 400);
@@ -45,55 +41,48 @@ public class DisplayGUI extends JApplet
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
         JButton save = new JButton("Save File");
         save.setBounds(50, 100, 95, 30);
         save.setFont(new Font("", Font.BOLD, 40));
         save.setForeground(Color.white);
         save.setBackground(Color.black);
 
-<<<<<<< HEAD
         JButton rightJ = new JButton("Right Justification");
         open.setBounds(50,100,95,30);
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
-        
+
         JButton leftJ = new JButton("Left Justification");
         open.setBounds(50,100,95,30);
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
-        
+
         JTextArea area = new JTextArea(10, 10);
-        JScrollPane scrollPane = new JScrollPane(area); 
+        JScrollPane scrollPane = new JScrollPane(area);
         area.setEditable(false);
-        
+
         rightJ.addActionListener(new ActionListener()
         {
         	public void actionPerformed(ActionEvent e)
             {
-        		
         		if(e.getSource() == "rightJ") {
         			String combine = "%80s";
         			for (int i = 0; i < stringsForUse.size(); i++){
         				combine += stringsForUse.get(i) + "\n";
         	        	System.out.printf(combine);
         			}
-        			
                 }
             }
         });
-        
+
         leftJ.addActionListener(new ActionListener()
         {
         	public void actionPerformed(ActionEvent e)
             {
-        		
+
         		if(e.getSource() == "rightJ") {
         			String combine = "%-80s";
         			for (int i = 0; i < stringsForUse.size(); i++){
@@ -104,8 +93,6 @@ public class DisplayGUI extends JApplet
             }
         });
 
-
-=======
         JTextField field = new JTextField();
 
         for(int i = 0; i < stringsForUse.size(); i++)
@@ -115,7 +102,7 @@ public class DisplayGUI extends JApplet
                 x = (stringsForUse.get(j)).length();
             }
         }
->>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
+
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
 
@@ -292,16 +279,16 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
-<<<<<<< HEAD
+
         frame.add(area);
         frame.add(rightJ);
         frame.add(leftJ);
-=======
+
         frame.add(field);
-        
-        
+
+
        // newmaster.add(master);
->>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
+
     }
 
     public void paint(Graphics g)
