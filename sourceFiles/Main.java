@@ -1,8 +1,5 @@
 
-import javax.swing.JApplet;
-
-
-public class Main extends JApplet
+public class Main
 {
     public static void main(String args[])
     {
