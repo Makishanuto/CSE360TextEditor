@@ -74,14 +74,6 @@ public class DisplayGUI extends JApplet
                       {
                           stringsForUse.add(userInput.nextLine());
                       }
-                      for(int i = 0; i < stringsForUse.size(); i++)
-                      {
-                          int x;
-                          for(int j = 0; j < stringsForUse.size(); j++){
-                              x = stringsForUse[j].length();
-                              System.out.println("-%" + (80-x) + "s", i);
-                          }
-                      }
                   }
                   else {
                       System.out.println("Option canelled lmao");
@@ -201,10 +193,18 @@ public class DisplayGUI extends JApplet
         
     }
     
-    public class readOutput extends JFrame{
+   private void displayOutput{
     	
     	JTextField field = new JTextField();
-    	
+    	 
+    	for(int i = 0; i < stringsForUse.size(); i++)
+         {
+             int x;
+             for(int j = 0; j < stringsForUse.size(); j++){
+                 x = stringsForUse[j].length();
+                 System.out.println("-%" + (80-x) + "s", i);
+             }
+         }
     }
 
     public void paint(Graphics g)
