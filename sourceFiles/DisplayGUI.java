@@ -9,6 +9,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JApplet;
 
+import java.io.*; // File
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class DisplayGUI extends JApplet
 {
 
@@ -64,13 +68,13 @@ public class DisplayGUI extends JApplet
                   int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                   if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                   {
-                      File readInputtedFile = fileChooser.getSelectedFile;
+                      File readInputtedFile = fileChooser.getSelectedFile();
                       Scanner userInput = new Scanner(System.in);
                       while(userInput.hasNextLine())
                       {
                           stringsForUse.add(userInput.nextLine());
                       }
-                      for(int i = 0, i < stringsForUse.size(); i++)
+                      for(int i = 0; i < stringsForUse.size(); i++)
                       {
                           System.out.printf("-%x", i);
                       }
