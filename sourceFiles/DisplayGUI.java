@@ -18,15 +18,18 @@ public class DisplayGUI extends JApplet
 
     public DisplayGUI ()
     {
-        String strInput = "";
-        int numLines = 0;
-        int numLinesRemoved = 0;
-        int numCount = 0;
-        int numWordsPerLine = 0;
-        int numLength = 0;
-
         ArrayList<String> stringsForUse = new ArrayList<String>();
 
+        
+        
+        JFrame newmaster = new JFrame();
+        newmaster.setLayout(new GridLayout(1,1));
+        newmaster.setSize(800, 400);
+        newmaster.setVisible(true);
+        newmaster.getContentPane().setBackground(Color.lightGray);
+        
+       
+        
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
         master.setSize(500, 400);
@@ -35,19 +38,25 @@ public class DisplayGUI extends JApplet
         master.getContentPane().setBackground(Color.lightGray);
 
         Container frame = master.getContentPane();
+
         //Create buttons
         JButton open = new JButton("Open File");
         open.setBounds(50,100,95,30);
         open.setFont(new Font("", Font.BOLD, 40));
         open.setForeground(Color.white);
         open.setBackground(Color.black);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
         JButton save = new JButton("Save File");
         save.setBounds(50, 100, 95, 30);
         save.setFont(new Font("", Font.BOLD, 40));
         save.setForeground(Color.white);
         save.setBackground(Color.black);
 
+<<<<<<< HEAD
         JButton rightJ = new JButton("Right Justification");
         open.setBounds(50,100,95,30);
         open.setFont(new Font("", Font.BOLD, 40));
@@ -96,6 +105,17 @@ public class DisplayGUI extends JApplet
         });
 
 
+=======
+        JTextField field = new JTextField();
+
+        for(int i = 0; i < stringsForUse.size(); i++)
+        {
+            int x;
+            for(int j = 0; j < stringsForUse.size(); j++){
+                x = (stringsForUse.get(j)).length();
+            }
+        }
+>>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
         // File Chooser
         final JFileChooser fileChooser  = new JFileChooser();
 
@@ -119,15 +139,50 @@ public class DisplayGUI extends JApplet
         {
             public void actionPerformed(ActionEvent e)
             {
+                int numLines = 0;
+                int numLinesRemoved = 0;
+                int numCount = 0;
+                int numWordsPerLine = 0;
+                int numLength = 0;
+
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
                       File readInputtedFile = fileChooser.getSelectedFile();
+                      String strInput = readInputtedFile.getName();
                       Scanner userInput = new Scanner(System.in);
                       while(userInput.hasNextLine())
                       {
                           stringsForUse.add(userInput.nextLine());
+                          numLines++;
                       }
+
+                      for(int i = 0; i < stringsForUse.size(); i++) // Check for and remove blank lines
+                      {
+                          if((stringsForUse.get(i)).length() == 0) {
+                              stringsForUse.remove(i);
+                              numLinesRemoved++;
+                          }
+                      }
+
+                      for(int i = 0; i < stringsForUse.size(); i++) // Concatenation
+                      {
+                          int next = i+1;
+                          String possibleOutput = "";
+                          possibleOutput +=  (stringsForUse.get(i)) + (stringsForUse.get(next));
+                          if(possibleOutput.length() < 80)
+                          {
+                              String toModify = stringsForUse.get(i) + (stringsForUse.get(next));
+                              stringsForUse.set(i, toModify);
+                              i++; // Skip to the next one
+                          }
+                      }
+                      fileName.setText(strInput);
+                      lNumLines.setText(Integer.toString(numLines));
+                      lRemoved.setText(Integer.toString(numLinesRemoved));
+                      lCount.setText(Integer.toString(numCount));
+                      lWordsPerLine.setText(Integer.toString(numWordsPerLine));
+                      lLength.setText(Integer.toString(numLength));
                  }
                  else { // User cancelled
                       System.out.println("Option cancelled lmao");
@@ -165,27 +220,27 @@ public class DisplayGUI extends JApplet
         input.setFont(new Font("", Font.BOLD, 30));
         input.setForeground(Color.black);
 
-        JLabel fileName = new JLabel(strInput);
+        JLabel fileName = new JLabel("--");
         fileName.setBounds(50, 100, 80, 30);;
         fileName.setFont(new Font("", ~Font.BOLD, 30));
         fileName.setForeground(Color.black);
 
-        JLabel lines = new JLabel("Number of Lines");
+        JLabel lines = new JLabel("Num of Lines");
         lines.setBounds(50, 100, 80, 30);;
         lines.setFont(new Font("", Font.BOLD, 30));
         lines.setForeground(Color.black);
 
-        JLabel lNumLines = new JLabel(Integer.toString(numLines));
+        JLabel lNumLines = new JLabel("--");
         lNumLines.setBounds(50, 100, 80, 30);;
         lNumLines.setFont(new Font("", ~Font.BOLD, 30));
         lNumLines.setForeground(Color.black);
 
-        JLabel removed = new JLabel("Blank Lines Removed");
+        JLabel removed = new JLabel("Blank Lines");
         removed.setBounds(50, 100, 80, 30);;
         removed.setFont(new Font("", Font.BOLD, 30));
         removed.setForeground(Color.black);
 
-        JLabel lRemoved = new JLabel(Integer.toString(numLinesRemoved));
+        JLabel lRemoved = new JLabel("--");
         lRemoved.setBounds(50, 100, 80, 30);;
         lRemoved.setFont(new Font("", ~Font.BOLD, 30));
         lRemoved.setForeground(Color.black);
@@ -195,27 +250,27 @@ public class DisplayGUI extends JApplet
         count.setFont(new Font("", Font.BOLD, 30));
         count.setForeground(Color.black);
 
-        JLabel lCount = new JLabel(Integer.toString(numCount));
+        JLabel lCount = new JLabel("--");
         lCount.setBounds(50, 100, 80, 30);;
         lCount.setFont(new Font("", ~Font.BOLD, 30));
         lCount.setForeground(Color.black);
 
-        JLabel wordsPerLine = new JLabel("Average words/line");
+        JLabel wordsPerLine = new JLabel("Avg words/line");
         wordsPerLine.setBounds(50, 100, 80, 30);;
         wordsPerLine.setFont(new Font("", Font.BOLD, 30));
         wordsPerLine.setForeground(Color.black);
 
-        JLabel lWordsPerLine = new JLabel(Integer.toString(numWordsPerLine));
+        JLabel lWordsPerLine = new JLabel("--");
         lWordsPerLine.setBounds(50, 100, 80, 30);;
         lWordsPerLine.setFont(new Font("", ~Font.BOLD, 30));
         lWordsPerLine.setForeground(Color.black);
 
-        JLabel length = new JLabel("Average line length");
+        JLabel length = new JLabel("Avg length");
         length.setBounds(50, 100, 80, 30);;
         length.setFont(new Font("", Font.BOLD, 30));
         length.setForeground(Color.black);
 
-        JLabel lLength = new JLabel(Integer.toString(numLength));
+        JLabel lLength = new JLabel("--");
         lLength.setBounds(50, 100, 80, 30);;
         lLength.setFont(new Font("", ~Font.BOLD, 30));
         lLength.setForeground(Color.black);
@@ -237,9 +292,16 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
+<<<<<<< HEAD
         frame.add(area);
         frame.add(rightJ);
         frame.add(leftJ);
+=======
+        frame.add(field);
+        
+        
+       // newmaster.add(master);
+>>>>>>> c32ef8a20480bd576b8c96e853bc4fd87f7ca797
     }
 
     public void paint(Graphics g)
