@@ -197,6 +197,14 @@ public class DisplayGUI extends JApplet
         frame.add(lWordsPerLine);
         frame.add(length);
         frame.add(lLength);
+        
+        
+    }
+    
+    public class readOutput extends JFrame{
+    	
+    	JTextField field = new JTextField();
+    	
     }
 
     public void paint(Graphics g)
