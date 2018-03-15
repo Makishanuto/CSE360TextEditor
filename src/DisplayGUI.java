@@ -1,6 +1,17 @@
+import java.awt.*;
+import javax.swing.*;
+
+import java.awt.event.*;
+import javax.swing.JApplet;
+import java.awt.*;
+import javax.swing.*;
+
+import java.awt.event.*;
+import javax.swing.JApplet;
+
 public class DisplayGUI extends JApplet
 {
-    DisplayGUI ()
+    public DisplayGUI ()
     {
         String strInput = "";
         int numLines = 0;
@@ -164,10 +175,5 @@ public class DisplayGUI extends JApplet
         g.fillRect(0, 0, 400, 400);
         g.setColor(Color.black);
         g.drawRect(0, 0, 400, 400);
-    }
-
-    public static void main(String args[])
-    {
-        new cse360();
     }
 }
