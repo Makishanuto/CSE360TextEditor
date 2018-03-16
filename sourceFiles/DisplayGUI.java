@@ -135,7 +135,7 @@ public class DisplayGUI extends JApplet
         frame.add(rightJ);
         frame.add(leftJ);
         final JFileChooser fileChooser  = new JFileChooser();
-        JLabel leftJBool = new JLabel("true");
+        JTextField leftJBool = new JTextField("true");
 
         rightJ.addActionListener(new ActionListener()
         {
@@ -211,6 +211,9 @@ public class DisplayGUI extends JApplet
                           numLines++;
                       }
                       userInput.close();
+
+                    // Input has been read
+
                       for(int i = 0; i < stringsForUse.size(); i++) // Check words
                       {
                           if((stringsForUse.get(i)).length() > 0)
@@ -292,9 +295,9 @@ public class DisplayGUI extends JApplet
                     try {
                         File writeFile = new File(fileChooser.getSelectedFile()+".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
-                        if(leftJBool.getText() == "true") {
+                        if(leftJBool.getText().equalsIgnoreCase("true")) {
                 			for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("%-80s", stringsForUse.get(i));
+                                outputText.printf("-%80s", stringsForUse.get(i));
                                 outputText.println();
                 			}
                 			outputText.close();
@@ -317,10 +320,6 @@ public class DisplayGUI extends JApplet
                 }
             }
         });
-
-
-
-
        // newmaster.add(master);
 
     }
