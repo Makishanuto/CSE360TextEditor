@@ -25,23 +25,23 @@ public class DisplayGUI extends JApplet
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
-        master.setSize(1000, 1000);
+        master.setSize(800, 900);
         master.setLayout(new BorderLayout());
         master.setVisible(true);
-        master.getContentPane().setBackground(Color.BLACK);
+        master.getContentPane().setBackground(Color.lightGray);
 
         Container frame = master.getContentPane();
 
         //Create buttons
         JButton open = new JButton("Open File");
         open.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
-        open.setForeground(Color.white);
-        open.setBackground(Color.black);
+        open.setForeground(Color.blue);
+        open.setBackground(Color.lightGray);
 
         JButton save = new JButton("Save File");
         save.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
-        save.setForeground(Color.white);
-        save.setBackground(Color.black);
+        save.setForeground(Color.blue);
+        save.setBackground(Color.lightGray);
 
 
         JButton rightJ = new JButton("Right");
@@ -71,7 +71,7 @@ public class DisplayGUI extends JApplet
 
         JButton analysis = new JButton("Show Analysis");
         analysis.setFont(new Font("", Font.BOLD, 40));
-        analysis.setForeground(Color.white);
+        analysis.setForeground(Color.blue);
         analysis.setBackground(Color.black);
         
         JButton blank = new JButton(" -- ");
@@ -98,13 +98,13 @@ public class DisplayGUI extends JApplet
         lines.setFont(new Font("", Font.PLAIN, 20));
         lines.setForeground(Color.black);
         lines.setOpaque(true);
-        lines.setBackground(Color.white);
+        lines.setBackground(Color.lightGray);
 
         JLabel lNumLines = new JLabel("--" ,SwingConstants.CENTER);
         lNumLines.setFont(new Font("", ~Font.PLAIN, 20));
         lNumLines.setForeground(Color.black);
         lNumLines.setOpaque(true);
-        lNumLines.setBackground(Color.white);
+        lNumLines.setBackground(Color.lightGray);
 
         
         JLabel removed = new JLabel("Blank Lines Removed" ,SwingConstants.CENTER);
@@ -125,14 +125,14 @@ public class DisplayGUI extends JApplet
         count.setFont(new Font("", Font.PLAIN, 20));
         count.setForeground(Color.black);
         count.setOpaque(true);
-        count.setBackground(Color.white);
+        count.setBackground(Color.lightGray);
 
 
         JLabel lCount = new JLabel("--" ,SwingConstants.CENTER);
         lCount.setFont(new Font("", ~Font.PLAIN, 20));
         lCount.setForeground(Color.black);
         lCount.setOpaque(true);
-        lCount.setBackground(Color.white);
+        lCount.setBackground(Color.lightGray);
 
 
         JLabel wordsPerLine = new JLabel("Avg words/line" ,SwingConstants.CENTER);
@@ -151,13 +151,13 @@ public class DisplayGUI extends JApplet
         length.setFont(new Font("", Font.PLAIN, 20));
         length.setForeground(Color.black);
         length.setOpaque(true);
-        length.setBackground(Color.white);
+        length.setBackground(Color.lightGray);
 
         JLabel lLength = new JLabel("--" ,SwingConstants.CENTER);
         lLength.setFont(new Font("", ~Font.PLAIN, 20));
         lLength.setForeground(Color.black);
         lLength.setOpaque(true);
-        lLength.setBackground(Color.white);
+        lLength.setBackground(Color.lightGray);
         
         JLabel spaces = new JLabel("Number of Spaces " ,SwingConstants.CENTER);
         spaces.setFont(new Font("", Font.PLAIN, 20));
@@ -175,43 +175,44 @@ public class DisplayGUI extends JApplet
         width.setFont(new Font("", Font.PLAIN, 20));
         width.setForeground(Color.black);
         width.setOpaque(true);
-        width.setBackground(Color.white);
+        width.setBackground(Color.lightGray);
 
         JLabel lwidth = new JLabel("--",  SwingConstants.CENTER);
         lwidth.setFont(new Font("", ~Font.BOLD, 20));
         lwidth.setForeground(Color.black);
         lwidth.setOpaque(true);
-        lwidth.setBackground(Color.white);
+        lwidth.setBackground(Color.lightGray);
         
         JLabel LineWidth = new JLabel("Line Width", SwingConstants.CENTER);
         LineWidth.setFont(new Font("", ~Font.PLAIN, 20));
         LineWidth.setForeground(Color.black);
         LineWidth.setOpaque(true);
-        LineWidth.setBackground(Color.blue);
+        LineWidth.setBackground(Color.lightGray);
 
         
         JLabel justification = new JLabel("Justification", SwingConstants.CENTER);
         justification.setFont(new Font("", ~Font.BOLD, 35));
         justification.setOpaque(true);
         justification.setForeground(Color.black);
-        justification.setBackground(Color.white);
+        justification.setBackground(Color.lightGray);
 
         JLabel spacing = new JLabel("Spacing", SwingConstants.CENTER);
         spacing.setFont(new Font("", ~Font.BOLD, 35));
         spacing.setOpaque(true);
         spacing.setForeground(Color.black);
-        spacing.setBackground(Color.white);
+        spacing.setBackground(Color.lightGray);
         
         JLabel analysis1 = new JLabel("Analysis", SwingConstants.CENTER);
         analysis1.setFont(new Font("", Font.PLAIN|Font.ITALIC, 35));
         analysis1.setOpaque(true);
         analysis1.setForeground(Color.black);
-        analysis1.setBackground(Color.white);
+        analysis1.setBackground(Color.lightGray);
         
         
         //JSlider
         JSlider slider = new JSlider(0, 100, 50);
         slider.setMajorTickSpacing(10); 
+        slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.addChangeListener(new ChangeListener() {
@@ -224,7 +225,8 @@ public class DisplayGUI extends JApplet
         
         //create panels
         Panel options = new Panel();
-        options.setLayout(new GridLayout(10, 2));
+        options.setLayout(new GridLayout(6, 2));
+        options.setSize(800, 250);
         options.add(open);
         options.add(save);
         options.add(justification);
@@ -240,12 +242,13 @@ public class DisplayGUI extends JApplet
         
         Panel middle = new Panel();
         middle.setLayout(new GridLayout(2, 1));
+        middle.setSize(800,400);
         middle.add(analysis);	
-        //middle.add(new JLabel());
         middle.add(analysis1);
         
         Panel bottom = new Panel();
         bottom.setLayout(new GridLayout(8, 2));
+        bottom.setSize(800, 250);
         bottom.add(input);
         bottom.add(fileName);
         bottom.add(lines);
@@ -263,9 +266,11 @@ public class DisplayGUI extends JApplet
         bottom.add(width);
         bottom.add(lwidth);
         
+        
+        
         frame.add(options, BorderLayout.NORTH);
-        frame.add((new JLabel()), BorderLayout.EAST);
-        frame.add((new JLabel()), BorderLayout.WEST);
+      //  frame.add((new JLabel()), BorderLayout.EAST);
+      //  frame.add((new JLabel()), BorderLayout.WEST);
         frame.add(middle, BorderLayout.CENTER);
         frame.add(bottom, BorderLayout.SOUTH);
         
