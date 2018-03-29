@@ -25,10 +25,10 @@ public class DisplayGUI extends JApplet
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
-        master.setSize(1028, 5000);
+        master.setSize(1000, 2400);
         master.setLayout(new BorderLayout());
         master.setVisible(true);
-        master.getContentPane().setBackground(Color.lightGray);
+        master.getContentPane().setBackground(Color.BLUE);
 
         Container frame = master.getContentPane();
 
@@ -36,38 +36,38 @@ public class DisplayGUI extends JApplet
         JButton open = new JButton("Open File");
         open.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
         open.setForeground(Color.white);
-        open.setBackground(Color.blue);
+        open.setBackground(Color.black);
 
         JButton save = new JButton("Save File");
         save.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
         save.setForeground(Color.white);
-        save.setBackground(Color.blue);
+        save.setBackground(Color.black);
 
 
         JButton rightJ = new JButton("Right");
-        rightJ.setFont(new Font("", Font.BOLD, 40));
-        rightJ.setForeground(Color.white);
-        rightJ.setBackground(Color.black);
+        rightJ.setFont(new Font("", Font.PLAIN, 20));
+        rightJ.setForeground(Color.black);
+        rightJ.setBackground(Color.blue);
 
         JButton leftJ = new JButton("Left");
-        leftJ.setFont(new Font("", Font.BOLD, 40));
-        leftJ.setForeground(Color.white);
-        leftJ.setBackground(Color.black);
+        leftJ.setFont(new Font("", Font.PLAIN, 20));
+        leftJ.setForeground(Color.black);
+        leftJ.setBackground(Color.blue);
         
         JButton fullJ = new JButton("Full");
-        fullJ.setFont(new Font("", Font.BOLD, 40));
-        fullJ.setForeground(Color.white);
-        fullJ.setBackground(Color.black);
+        fullJ.setFont(new Font("", Font.PLAIN, 20));
+        fullJ.setForeground(Color.black);
+        fullJ.setBackground(Color.blue);
         
         JButton singleS = new JButton("Single");
-        singleS.setFont(new Font("", Font.BOLD, 40));
-        singleS.setForeground(Color.white);
-        singleS.setBackground(Color.black);
+        singleS.setFont(new Font("", Font.PLAIN, 20));
+        singleS.setForeground(Color.black);
+        singleS.setBackground(Color.blue);
         
         JButton doubleS = new JButton("Double");
-        doubleS.setFont(new Font("", Font.BOLD, 40));
-        doubleS.setForeground(Color.white);
-        doubleS.setBackground(Color.black);
+        doubleS.setFont(new Font("", Font.PLAIN, 20));
+        doubleS.setForeground(Color.black);
+        doubleS.setBackground(Color.blue);
 
         JButton analysis = new JButton("Show Analysis");
         analysis.setFont(new Font("", Font.BOLD, 40));
@@ -75,96 +75,145 @@ public class DisplayGUI extends JApplet
         analysis.setBackground(Color.black);
         
         JButton blank = new JButton(" -- ");
-        blank.setFont(new Font("", Font.BOLD, 40));
-        blank.setForeground(Color.white);
-        blank.setBackground(Color.black);
+        blank.setFont(new Font("", Font.PLAIN, 40));
+        blank.setForeground(Color.black);
+        blank.setBackground(Color.blue);
         
         
         //Create Labels
+        		
         JLabel input = new JLabel("Input File" ,  SwingConstants.CENTER);
-        input.setFont(new Font("", Font.BOLD, 30));
+        input.setFont(new Font("", Font.PLAIN, 20));
         input.setForeground(Color.black);
+        input.setOpaque(true);
+        input.setBackground(Color.blue);
 
         JLabel fileName = new JLabel("--" ,  SwingConstants.CENTER);
-        fileName.setFont(new Font("", ~Font.BOLD, 30));
+        fileName.setFont(new Font("", ~Font.PLAIN, 20));
         fileName.setForeground(Color.black);
+        fileName.setOpaque(true);
+        fileName.setBackground(Color.blue);
 
         JLabel lines = new JLabel("Num of Lines" ,  SwingConstants.CENTER);
-        lines.setFont(new Font("", Font.BOLD, 30));
+        lines.setFont(new Font("", Font.PLAIN, 20));
         lines.setForeground(Color.black);
+        lines.setOpaque(true);
+        lines.setBackground(Color.white);
 
         JLabel lNumLines = new JLabel("--" ,SwingConstants.CENTER);
-        lNumLines.setFont(new Font("", ~Font.BOLD, 30));
+        lNumLines.setFont(new Font("", ~Font.PLAIN, 20));
         lNumLines.setForeground(Color.black);
+        lNumLines.setOpaque(true);
+        lNumLines.setBackground(Color.white);
 
+        
         JLabel removed = new JLabel("Blank Lines Removed" ,SwingConstants.CENTER);
-        removed.setFont(new Font("", Font.BOLD, 30));
+        removed.setFont(new Font("", Font.PLAIN, 20));
         removed.setForeground(Color.black);
+        removed.setOpaque(true);
+        removed.setBackground(Color.blue);
+
 
         JLabel lRemoved = new JLabel("--" ,SwingConstants.CENTER);
-        lRemoved.setFont(new Font("", ~Font.BOLD, 30));
+        lRemoved.setFont(new Font("", ~Font.PLAIN, 20));
         lRemoved.setForeground(Color.black);
+        lRemoved.setOpaque(true);
+        lRemoved.setBackground(Color.blue);
+
 
         JLabel count = new JLabel("Word Count" ,SwingConstants.CENTER);
-        count.setFont(new Font("", Font.BOLD, 30));
+        count.setFont(new Font("", Font.PLAIN, 20));
         count.setForeground(Color.black);
+        count.setOpaque(true);
+        count.setBackground(Color.white);
+
 
         JLabel lCount = new JLabel("--" ,SwingConstants.CENTER);
-        lCount.setFont(new Font("", ~Font.BOLD, 30));
+        lCount.setFont(new Font("", ~Font.PLAIN, 20));
         lCount.setForeground(Color.black);
+        lCount.setOpaque(true);
+        lCount.setBackground(Color.white);
+
 
         JLabel wordsPerLine = new JLabel("Avg words/line" ,SwingConstants.CENTER);
-        wordsPerLine.setFont(new Font("", Font.BOLD, 30));
+        wordsPerLine.setFont(new Font("", Font.PLAIN, 20));
         wordsPerLine.setForeground(Color.black);
+        wordsPerLine.setOpaque(true);
+        wordsPerLine.setBackground(Color.blue);
 
         JLabel lWordsPerLine = new JLabel("--" ,SwingConstants.CENTER);
-        lWordsPerLine.setFont(new Font("", ~Font.BOLD, 30));
+        lWordsPerLine.setFont(new Font("", ~Font.PLAIN, 20));
         lWordsPerLine.setForeground(Color.black);
+        lWordsPerLine.setOpaque(true);
+        lWordsPerLine.setBackground(Color.blue);
 
         JLabel length = new JLabel("Avg line length " ,SwingConstants.CENTER);
-        length.setFont(new Font("", Font.BOLD, 30));
+        length.setFont(new Font("", Font.PLAIN, 20));
         length.setForeground(Color.black);
+        length.setOpaque(true);
+        length.setBackground(Color.white);
 
         JLabel lLength = new JLabel("--" ,SwingConstants.CENTER);
-        lLength.setFont(new Font("", ~Font.BOLD, 30));
+        lLength.setFont(new Font("", ~Font.PLAIN, 20));
         lLength.setForeground(Color.black);
+        lLength.setOpaque(true);
+        lLength.setBackground(Color.white);
         
         JLabel spaces = new JLabel("Number of Spaces " ,SwingConstants.CENTER);
-        spaces.setFont(new Font("", Font.BOLD, 30));
+        spaces.setFont(new Font("", Font.PLAIN, 20));
         spaces.setForeground(Color.black);
+        spaces.setOpaque(true);
+        spaces.setBackground(Color.blue);
 
         JLabel lspaces = new JLabel("--" ,SwingConstants.CENTER);
-        lspaces.setFont(new Font("", ~Font.BOLD, 30));
+        lspaces.setFont(new Font("", ~Font.BOLD, 20));
         lspaces.setForeground(Color.black);
+        lspaces.setOpaque(true);
+        lspaces.setBackground(Color.blue);
         
         JLabel width = new JLabel("Line Width" ,SwingConstants.CENTER);
-        width.setFont(new Font("", Font.BOLD, 30));
+        width.setFont(new Font("", Font.PLAIN, 20));
         width.setForeground(Color.black);
+        width.setOpaque(true);
+        width.setBackground(Color.white);
 
         JLabel lwidth = new JLabel("--",  SwingConstants.CENTER);
-        lwidth.setFont(new Font("", ~Font.BOLD, 30));
+        lwidth.setFont(new Font("", ~Font.BOLD, 20));
         lwidth.setForeground(Color.black);
+        lwidth.setOpaque(true);
+        lwidth.setBackground(Color.white);
         
         JLabel LineWidth = new JLabel("Line Width", SwingConstants.CENTER);
-        LineWidth.setFont(new Font("", ~Font.BOLD, 30));
+        LineWidth.setFont(new Font("", ~Font.PLAIN, 20));
         LineWidth.setForeground(Color.black);
+        width.setOpaque(true);
+        width.setBackground(Color.white);
 
         
         JLabel justification = new JLabel("Justification", SwingConstants.CENTER);
         justification.setFont(new Font("", ~Font.BOLD, 35));
-        justification.setBackground(Color.blue);
+        justification.setOpaque(true);
+        justification.setForeground(Color.black);
+        justification.setBackground(Color.white);
 
         JLabel spacing = new JLabel("Spacing", SwingConstants.CENTER);
         spacing.setFont(new Font("", ~Font.BOLD, 35));
-        spacing.setBackground(Color.blue);
+        spacing.setOpaque(true);
+        spacing.setForeground(Color.black);
+        spacing.setBackground(Color.white);
         
         JLabel analysis1 = new JLabel("Analysis", SwingConstants.CENTER);
-        analysis1.setFont(new Font("", ~Font.BOLD, 30));
+        analysis1.setFont(new Font("", Font.BOLD|Font.ITALIC, 35));
+        analysis1.setOpaque(true);
         analysis1.setForeground(Color.black);
+        analysis1.setBackground(Color.white);
         
         
         //JSlider
-        JSlider slider = new JSlider();
+        JSlider slider = new JSlider(0, 100, 50);
+        slider.setMajorTickSpacing(10); 
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
         slider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
               System.out.println("Slider: " + slider.getValue());
