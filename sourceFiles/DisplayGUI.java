@@ -25,10 +25,10 @@ public class DisplayGUI extends JApplet
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
-        master.setSize(1000, 2400);
+        master.setSize(1000, 1000);
         master.setLayout(new BorderLayout());
         master.setVisible(true);
-        master.getContentPane().setBackground(Color.BLUE);
+        master.getContentPane().setBackground(Color.BLACK);
 
         Container frame = master.getContentPane();
 
@@ -186,8 +186,8 @@ public class DisplayGUI extends JApplet
         JLabel LineWidth = new JLabel("Line Width", SwingConstants.CENTER);
         LineWidth.setFont(new Font("", ~Font.PLAIN, 20));
         LineWidth.setForeground(Color.black);
-        width.setOpaque(true);
-        width.setBackground(Color.white);
+        LineWidth.setOpaque(true);
+        LineWidth.setBackground(Color.blue);
 
         
         JLabel justification = new JLabel("Justification", SwingConstants.CENTER);
@@ -203,7 +203,7 @@ public class DisplayGUI extends JApplet
         spacing.setBackground(Color.white);
         
         JLabel analysis1 = new JLabel("Analysis", SwingConstants.CENTER);
-        analysis1.setFont(new Font("", Font.BOLD|Font.ITALIC, 35));
+        analysis1.setFont(new Font("", Font.PLAIN|Font.ITALIC, 35));
         analysis1.setOpaque(true);
         analysis1.setForeground(Color.black);
         analysis1.setBackground(Color.white);
@@ -241,7 +241,7 @@ public class DisplayGUI extends JApplet
         Panel middle = new Panel();
         middle.setLayout(new GridLayout(2, 1));
         middle.add(analysis);	
-        //middle.add();
+        //middle.add(new JLabel());
         middle.add(analysis1);
         
         Panel bottom = new Panel();
@@ -264,8 +264,8 @@ public class DisplayGUI extends JApplet
         bottom.add(lwidth);
         
         frame.add(options, BorderLayout.NORTH);
-        //frame.add(blank, BorderLayout.EAST);
-        //frame.add((blank, BorderLayout.WEST);
+        frame.add((new JLabel()), BorderLayout.EAST);
+        frame.add((new JLabel()), BorderLayout.WEST);
         frame.add(middle, BorderLayout.CENTER);
         frame.add(bottom, BorderLayout.SOUTH);
         
