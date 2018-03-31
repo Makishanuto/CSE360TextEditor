@@ -75,7 +75,7 @@ public class DisplayGUI extends JApplet
         analysis.setBackground(Color.black);
         
         JButton blank = new JButton(" -- ");
-        blank.setFont(new Font("", Font.PLAIN, 40));
+        blank.setFont(new Font("", Font.PLAIN, 20));
         blank.setForeground(Color.black);
         blank.setBackground(Color.blue);
         
@@ -269,8 +269,6 @@ public class DisplayGUI extends JApplet
         
         
         frame.add(options, BorderLayout.NORTH);
-      //  frame.add((new JLabel()), BorderLayout.EAST);
-      //  frame.add((new JLabel()), BorderLayout.WEST);
         frame.add(middle, BorderLayout.CENTER);
         frame.add(bottom, BorderLayout.SOUTH);
         
@@ -292,12 +290,21 @@ public class DisplayGUI extends JApplet
         {
         	public void actionPerformed(ActionEvent e)
             {
-        		if(e.getSource() == "rightJ") {
+        		if(e.getSource() == "leftJ") {
         			leftJBool.setText("true");
                 }
             }
         });
 
+        fullJ.addActionListener(new ActionListener()
+        {
+        	public void actionPerformed(ActionEvent e)
+            {
+        		if(e.getSource() == "fullJ") {
+        			leftJBool.setText("true");
+                }
+            }
+        });
 
         for(int i = 0; i < stringsForUse.size(); i++)
         {
@@ -469,8 +476,8 @@ public class DisplayGUI extends JApplet
     {
         //Draw background
         g.setColor(Color.gray);
-        g.fillRect(0, 0, 400, 400);
+        g.fillRect(0, 0, 800, 900);
         g.setColor(Color.black);
-        g.drawRect(0, 0, 400, 400);
+        g.drawRect(0, 0, 800, 900);
     }
 }
