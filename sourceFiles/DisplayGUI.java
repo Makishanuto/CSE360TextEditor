@@ -80,6 +80,8 @@ public class DisplayGUI extends JApplet
         blank.setBackground(Color.blue);
         
         
+        
+        
         //Create Labels
         		
         JLabel input = new JLabel("Input File" ,  SwingConstants.CENTER);
@@ -272,6 +274,8 @@ public class DisplayGUI extends JApplet
         frame.add(middle, BorderLayout.CENTER);
         frame.add(bottom, BorderLayout.SOUTH);
         
+        
+//------------------------------------------------------------------END OF GUI------------------------------------------------------------------------------
 
         final JFileChooser fileChooser  = new JFileChooser();
         JTextField leftJBool = new JTextField("true");
@@ -281,7 +285,7 @@ public class DisplayGUI extends JApplet
         	public void actionPerformed(ActionEvent e)
             {
         		if(e.getSource() == "rightJ") {
-                    leftJBool.setText("false");
+                    leftJBool.setText("true");
                 }
             }
         });
@@ -291,7 +295,7 @@ public class DisplayGUI extends JApplet
         	public void actionPerformed(ActionEvent e)
             {
         		if(e.getSource() == "leftJ") {
-        			leftJBool.setText("true");
+        			leftJBool.setText("false");
                 }
             }
         });
@@ -301,7 +305,7 @@ public class DisplayGUI extends JApplet
         	public void actionPerformed(ActionEvent e)
             {
         		if(e.getSource() == "fullJ") {
-        			leftJBool.setText("true");
+        			leftJBool.setText("full");
                 }
             }
         });
@@ -315,6 +319,7 @@ public class DisplayGUI extends JApplet
         }
 
         // File Chooser
+
 
 
         //Change color when hovering
@@ -331,22 +336,30 @@ public class DisplayGUI extends JApplet
             }
         });
 
+        
 
         //Do when clicked
         open.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
+            	// variables 
                 int numLines = 0;
                 int numLinesRemoved = 0;
                 int numCount = 0;
                 int numWordsPerLine = 0;
                 int numLength = 0;
+                //int linewidth =0;
+                
+                
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
+                	
                       File readInputtedFile = fileChooser.getSelectedFile();
                       String strInput = readInputtedFile.getName();
+                      
+                      
                     Scanner userInput = null;
                     try {
                         userInput = new Scanner(readInputtedFile);
@@ -354,15 +367,15 @@ public class DisplayGUI extends JApplet
                         ex.printStackTrace();
                     }
                     while(userInput.hasNextLine())
-                      {
-                          stringsForUse.add(userInput.nextLine());
-                          numLines++;
-                      }
+                     {
+                        stringsForUse.add(userInput.nextLine());
+                        numLines++;
+                     }
                       userInput.close();
-
                     // Input has been read
+                      
 
-                      for(int i = 0; i < stringsForUse.size(); i++) // Check words
+                      for(int i = 0; i < stringsForUse.size(); i++) // Check word count 
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
@@ -370,19 +383,23 @@ public class DisplayGUI extends JApplet
                               numCount += listOfWords.length;
                           }
                       }
-                      numWordsPerLine = numCount / stringsForUse.size();
+                                    
+                      numWordsPerLine = numCount / stringsForUse.size();   //gets words per line 
+                      
                       int total = 0;
                       for(int i = 0; i < stringsForUse.size(); i++) { // Line Length
                           total += (stringsForUse.get(i)).length();
                       }
                       numLength = total / stringsForUse.size();
 
+                      int linewidth = slider.getValue();
                       for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
                       {
-                          if((stringsForUse.get(i)).length() > 80) {
-
+                          if((stringsForUse.get(i)).length() >linewidth) {
                           }
                       }
+                      
+                      
                       for(int i = 0; i < stringsForUse.size(); i++) // Check for and remove blank lines
                       {
                           if((stringsForUse.get(i)).length() == 0) {
@@ -391,12 +408,13 @@ public class DisplayGUI extends JApplet
                           }
                       }
 
+                      
                       for(int i = 0; i < stringsForUse.size()-1; i++) // Concatenation
                       {
                           int next = i+1;
                           String possibleOutput = "";
                           possibleOutput +=  (stringsForUse.get(i)) + " " + (stringsForUse.get(next));
-                          if(possibleOutput.length() < 80)
+                          if(possibleOutput.length() < linewidth)
                           {
                               String toModify = stringsForUse.get(i) + " " + (stringsForUse.get(next));
                               stringsForUse.set(i, toModify);
@@ -423,7 +441,7 @@ public class DisplayGUI extends JApplet
         {
             public void mouseEntered(java.awt.event.MouseEvent evt)
             {
-                save.setBackground(Color.gray);
+                save.setBackground(Color.black);
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt)
@@ -443,19 +461,23 @@ public class DisplayGUI extends JApplet
                     try {
                         File writeFile = new File(fileChooser.getSelectedFile()+".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
+                        int linewidth = slider.getValue();
                         if(leftJBool.getText().equalsIgnoreCase("true")) {
                 			for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("-%80s", stringsForUse.get(i));
+                                outputText.printf("%" + linewidth + "s", stringsForUse.get(i));
                                 outputText.println();
                 			}
                 			outputText.close();
                         }
-                        else {
-                            for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("%80s", stringsForUse.get(i));
+                        if(leftJBool.getText().equalsIgnoreCase("false")) {
+                        	for (int i = 0; i < stringsForUse.size(); i++){
+                                outputText.printf("-%" + linewidth + "s", stringsForUse.get(i));
                                 outputText.println();
                             }
                             outputText.close();
+                        }
+                        else {
+                            //full justification 
                         }
 
                     } catch(Exception ex) {
