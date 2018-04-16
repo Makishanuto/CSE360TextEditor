@@ -25,7 +25,7 @@ public class DisplayGUI extends JApplet
 
         //Create JFrame
         JFrame master = new JFrame("Text Analyzer");
-        master.setSize(800, 900);
+        master.setSize(800, 700);
         master.setLayout(new BorderLayout());
         master.setVisible(true);
         master.getContentPane().setBackground(Color.lightGray);
@@ -36,54 +36,21 @@ public class DisplayGUI extends JApplet
         JButton open = new JButton("Open File");
         open.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
         open.setForeground(Color.blue);
-        open.setBackground(Color.lightGray);
+        open.setBackground(Color.black);
 
         JButton save = new JButton("Save File");
         save.setFont(new Font("", Font.BOLD|Font.ITALIC, 40));
         save.setForeground(Color.blue);
-        save.setBackground(Color.lightGray);
+        save.setBackground(Color.black);
 
-
-        JButton rightJ = new JButton("Right");
-        rightJ.setFont(new Font("", Font.PLAIN, 20));
-        rightJ.setForeground(Color.black);
-        rightJ.setBackground(Color.blue);
-
-        JButton leftJ = new JButton("Left");
-        leftJ.setFont(new Font("", Font.PLAIN, 20));
-        leftJ.setForeground(Color.black);
-        leftJ.setBackground(Color.blue);
-        
-        JButton fullJ = new JButton("Full");
-        fullJ.setFont(new Font("", Font.PLAIN, 20));
-        fullJ.setForeground(Color.black);
-        fullJ.setBackground(Color.blue);
-        
-        JButton singleS = new JButton("Single");
-        singleS.setFont(new Font("", Font.PLAIN, 20));
-        singleS.setForeground(Color.black);
-        singleS.setBackground(Color.blue);
-        
-        JButton doubleS = new JButton("Double");
-        doubleS.setFont(new Font("", Font.PLAIN, 20));
-        doubleS.setForeground(Color.black);
-        doubleS.setBackground(Color.blue);
-
+      
         JButton analysis = new JButton("Show Analysis");
         analysis.setFont(new Font("", Font.BOLD, 40));
         analysis.setForeground(Color.blue);
         analysis.setBackground(Color.black);
-        
-        JButton blank = new JButton(" -- ");
-        blank.setFont(new Font("", Font.PLAIN, 20));
-        blank.setForeground(Color.black);
-        blank.setBackground(Color.blue);
-        
-        
-        
+
         
         //Create Labels
-        		
         JLabel input = new JLabel("Input File" ,  SwingConstants.CENTER);
         input.setFont(new Font("", Font.PLAIN, 20));
         input.setForeground(Color.black);
@@ -193,13 +160,13 @@ public class DisplayGUI extends JApplet
 
         
         JLabel justification = new JLabel("Justification", SwingConstants.CENTER);
-        justification.setFont(new Font("", ~Font.BOLD, 35));
+        justification.setFont(new Font("", Font.PLAIN|Font.BOLD, 30));
         justification.setOpaque(true);
         justification.setForeground(Color.black);
         justification.setBackground(Color.lightGray);
 
         JLabel spacing = new JLabel("Spacing", SwingConstants.CENTER);
-        spacing.setFont(new Font("", ~Font.BOLD, 35));
+        spacing.setFont(new Font("", Font.PLAIN|Font.BOLD, 30));
         spacing.setOpaque(true);
         spacing.setForeground(Color.black);
         spacing.setBackground(Color.lightGray);
@@ -217,40 +184,47 @@ public class DisplayGUI extends JApplet
         slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-        slider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-              System.out.println("Slider: " + slider.getValue());
-            }
-          });
+   
+        //CHoices
+        Choice justificationchoice = new Choice();
+        justificationchoice.setFont(new Font("", Font.PLAIN, 20));
+        justificationchoice.setBackground(Color.lightGray);
+        justificationchoice.setForeground(Color.black);
+        justificationchoice.addItem("Left");
+        justificationchoice.addItem("Right");
+        justificationchoice.addItem("Full");
+              
+        Choice spacingchoice = new Choice();
+        spacingchoice.setFont(new Font("", Font.PLAIN ,20));
+        spacingchoice.setBackground(Color.lightGray);
+        spacingchoice.setForeground(Color.black);
+        spacingchoice.addItem("Single");
+        spacingchoice.addItem("Double");
+        
           
-        
-        
+      
         //create panels
         Panel options = new Panel();
-        options.setLayout(new GridLayout(6, 2));
-        options.setSize(800, 250);
+        options.setLayout(new GridLayout(4, 2));
+        //options.setSize(800, 100);
         options.add(open);
         options.add(save);
         options.add(justification);
         options.add(spacing);
-        options.add(rightJ);
-        options.add(singleS);
-        options.add(leftJ);
-        options.add(doubleS);
-        options.add(fullJ);
-        options.add(blank);
+        options.add(justificationchoice);
+        options.add(spacingchoice);
         options.add(LineWidth);
         options.add(slider);
         
         Panel middle = new Panel();
         middle.setLayout(new GridLayout(2, 1));
-        middle.setSize(800,400);
+       // middle.setSize(800,200);
         middle.add(analysis);	
         middle.add(analysis1);
         
         Panel bottom = new Panel();
         bottom.setLayout(new GridLayout(8, 2));
-        bottom.setSize(800, 250);
+       // bottom.setSize(800, 200);
         bottom.add(input);
         bottom.add(fileName);
         bottom.add(lines);
@@ -278,37 +252,8 @@ public class DisplayGUI extends JApplet
 //------------------------------------------------------------------END OF GUI------------------------------------------------------------------------------
 
         final JFileChooser fileChooser  = new JFileChooser();
-        JTextField leftJBool = new JTextField("true");
+        
 
-        rightJ.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-            {
-        		if(e.getSource() == "rightJ") {
-                    leftJBool.setText("true");
-                }
-            }
-        });
-
-        leftJ.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-            {
-        		if(e.getSource() == "leftJ") {
-        			leftJBool.setText("false");
-                }
-            }
-        });
-
-        fullJ.addActionListener(new ActionListener()
-        {
-        	public void actionPerformed(ActionEvent e)
-            {
-        		if(e.getSource() == "fullJ") {
-        			leftJBool.setText("full");
-                }
-            }
-        });
 
         for(int i = 0; i < stringsForUse.size(); i++)
         {
@@ -317,9 +262,6 @@ public class DisplayGUI extends JApplet
                 x = (stringsForUse.get(j)).length();
             }
         }
-
-        // File Chooser
-
 
 
         //Change color when hovering
@@ -335,9 +277,36 @@ public class DisplayGUI extends JApplet
                 open.setBackground(Color.black);
             }
         });
+        
+        save.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+                save.setBackground(Color.gray);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+                save.setBackground(Color.black);
+            }
+        });
+        
+ 
+        analysis.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt)
+            {
+            	analysis.setBackground(Color.gray);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt)
+            {
+            	analysis.setBackground(Color.black);
+            }
+        });
 
         
-
+        
         //Do when clicked
         open.addActionListener(new ActionListener()
         {
@@ -349,7 +318,7 @@ public class DisplayGUI extends JApplet
                 int numCount = 0;
                 int numWordsPerLine = 0;
                 int numLength = 0;
-                //int linewidth =0;
+                
                 
                 
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
@@ -436,19 +405,7 @@ public class DisplayGUI extends JApplet
               }
         });
 
-        //Change color when hovering
-        save.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt)
-            {
-                save.setBackground(Color.black);
-            }
 
-            public void mouseExited(java.awt.event.MouseEvent evt)
-            {
-                save.setBackground(Color.black);
-            }
-        });
 
         //Do when clicked
         save.addActionListener(new ActionListener()
@@ -461,23 +418,28 @@ public class DisplayGUI extends JApplet
                     try {
                         File writeFile = new File(fileChooser.getSelectedFile()+".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
+                        
                         int linewidth = slider.getValue();
-                        if(leftJBool.getText().equalsIgnoreCase("true")) {
+                        
+                                    
+                        if(justificationchoice.getSelectedIndex() == 0) {  //Left justification 
                 			for (int i = 0; i < stringsForUse.size(); i++){
                                 outputText.printf("%" + linewidth + "s", stringsForUse.get(i));
                                 outputText.println();
                 			}
                 			outputText.close();
+                			
                         }
-                        if(leftJBool.getText().equalsIgnoreCase("false")) {
-                        	for (int i = 0; i < stringsForUse.size(); i++){
+                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification 
+                            for (int i = 0; i < stringsForUse.size(); i++){
                                 outputText.printf("-%" + linewidth + "s", stringsForUse.get(i));
                                 outputText.println();
                             }
                             outputText.close();
                         }
-                        else {
-                            //full justification 
+                        if (justificationchoice.getSelectedIndex() == 2){
+                            //full justification code
+                            outputText.close();
                         }
 
                     } catch(Exception ex) {
@@ -498,8 +460,8 @@ public class DisplayGUI extends JApplet
     {
         //Draw background
         g.setColor(Color.gray);
-        g.fillRect(0, 0, 800, 900);
+        g.fillRect(0, 0, 800, 700);
         g.setColor(Color.black);
-        g.drawRect(0, 0, 800, 900);
+        g.drawRect(0, 0, 800, 700);
     }
 }
