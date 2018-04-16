@@ -255,13 +255,6 @@ public class DisplayGUI extends JApplet
         
 
 
-        for(int i = 0; i < stringsForUse.size(); i++)
-        {
-            int x;
-            for(int j = 0; j < stringsForUse.size(); j++){
-                x = (stringsForUse.get(j)).length();
-            }
-        }
 
 
         //Change color when hovering
@@ -305,7 +298,13 @@ public class DisplayGUI extends JApplet
             }
         });
 
-        
+        for(int i = 0; i < stringsForUse.size(); i++)
+        {
+            int x;
+            for(int j = 0; j < stringsForUse.size(); j++){
+                x = (stringsForUse.get(j)).length();
+            }
+        }
         
         //Do when clicked
         open.addActionListener(new ActionListener()
@@ -318,6 +317,7 @@ public class DisplayGUI extends JApplet
                 int numCount = 0;
                 int numWordsPerLine = 0;
                 int numLength = 0;
+                int numberofspaces =0;
                 
                 
                 
@@ -353,13 +353,22 @@ public class DisplayGUI extends JApplet
                           }
                       }
                                     
-                      numWordsPerLine = numCount / stringsForUse.size();   //gets words per line 
+                      numWordsPerLine = numCount / (stringsForUse.size());   //gets words per line 
+                      
+                      for(int i = 0; i < stringsForUse.size(); i++) // Get number of spaces 
+                      {                   	  
+                         String totes = "" ;
+                         totes += stringsForUse.get(i);
+                         System.out.print(totes);
+                          //numberofspaces = totes.length() - totes.replaceAll(" ", "").length();
+                      }
                       
                       int total = 0;
                       for(int i = 0; i < stringsForUse.size(); i++) { // Line Length
                           total += (stringsForUse.get(i)).length();
                       }
                       numLength = total / stringsForUse.size();
+                      
 
                       int linewidth = slider.getValue();
                       for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
@@ -383,7 +392,7 @@ public class DisplayGUI extends JApplet
                           int next = i+1;
                           String possibleOutput = "";
                           possibleOutput +=  (stringsForUse.get(i)) + " " + (stringsForUse.get(next));
-                          if(possibleOutput.length() < linewidth)
+                          if(possibleOutput.length() < 80)
                           {
                               String toModify = stringsForUse.get(i) + " " + (stringsForUse.get(next));
                               stringsForUse.set(i, toModify);
@@ -397,6 +406,17 @@ public class DisplayGUI extends JApplet
                       lCount.setText(Integer.toString(numCount));
                       lWordsPerLine.setText(Integer.toString(numWordsPerLine));
                       lLength.setText(Integer.toString(numLength));
+                      lspaces.setText(Integer.toString(numberofspaces));
+                      lwidth.setText(Integer.toString(slider.getValue()));
+                      
+                      fileName.setVisible(false);
+                      lNumLines.setVisible(false);
+                      lRemoved.setVisible(false);
+                      lCount.setVisible(false);
+                      lWordsPerLine.setVisible(false);
+                      lLength.setVisible(false);
+                      lspaces.setVisible(false);
+                      lwidth.setVisible(false);
                  }
                  else { // User cancelled
                       System.out.println("Option cancelled lmao");
@@ -405,7 +425,20 @@ public class DisplayGUI extends JApplet
               }
         });
 
-
+        analysis.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+            	fileName.setVisible(true);
+                lNumLines.setVisible(true);
+                lRemoved.setVisible(true);
+                lCount.setVisible(true);
+                lWordsPerLine.setVisible(true);
+                lLength.setVisible(true);
+                lspaces.setVisible(true);
+                lwidth.setVisible(true);
+            }
+        });
 
         //Do when clicked
         save.addActionListener(new ActionListener()
@@ -440,6 +473,12 @@ public class DisplayGUI extends JApplet
                         if (justificationchoice.getSelectedIndex() == 2){
                             //full justification code
                             outputText.close();
+                        }
+                        if (spacingchoice.getSelectedIndex() ==0){ //single spacing 
+                        	
+                        }
+                        if (spacingchoice.getSelectedIndex() ==1){ //double spacing 
+                        	
                         }
 
                     } catch(Exception ex) {
