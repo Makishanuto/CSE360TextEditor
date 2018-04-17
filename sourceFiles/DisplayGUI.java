@@ -255,10 +255,6 @@ public class DisplayGUI extends JApplet
 //------------------------------------------------------------------END OF GUI------------------------------------------------------------------------------
 
         final JFileChooser fileChooser  = new JFileChooser();
-        
-
-
-
 
         //Change color when hovering
         open.addMouseListener(new java.awt.event.MouseAdapter()
@@ -346,12 +342,16 @@ public class DisplayGUI extends JApplet
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
+                        	  //listOfWords = (stringsForUse.get(i)).split("\\s+");
+                              //numCount += listOfWords.length;
                               List<String> wordsInLine = Arrays.asList((stringsForUse.get(i)).split("\\s+"));
+          
                               listOfWords.addAll(wordsInLine);
+                              numCount += listOfWords.size();
                           }
                       }
                                     
-                      numWordsPerLine = listOfWords.size() / (stringsForUse.size());   //gets words per line
+                      numWordsPerLine = numCount / (stringsForUse.size());   //gets words per line
                       
 
                       
