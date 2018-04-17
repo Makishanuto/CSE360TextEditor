@@ -13,9 +13,10 @@ import java.awt.event.*;
 import javax.swing.JApplet;
 
 import java.io.*; // File
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class DisplayGUI extends JApplet
@@ -306,13 +307,15 @@ public class DisplayGUI extends JApplet
         {
             public void actionPerformed(ActionEvent e)
             {
-            	// variables 
+            	stringsForUse.clear();
+            	listOfWords.clear();
+                // variables
                 int numLines = 0;
                 int numLinesRemoved = 0;
                 int numCount = 0;
                 int numWordsPerLine = 0;
                 int numLength = 0;
-                int numberofspaces =0;
+                int numberofspaces = 0;
                 
                 
                 
@@ -339,7 +342,7 @@ public class DisplayGUI extends JApplet
                     // Input has been read, added to stringsForUse
                       
 
-                      for(int i = 0; i < stringsForUse.size(); i++) // Check word count 
+                      for(int i = 0; i < stringsForUse.size(); i++) // Check word count
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
@@ -367,7 +370,7 @@ public class DisplayGUI extends JApplet
                       }
                       
                       
-                      for(int i = 0; i < stringsForUse.size(); i++) // Get number of spaces 
+                      for(int i = 0; i < stringsForUse.size(); i++) // Get number of spaces
                       {        
                     	  
                     	  if((stringsForUse.get(i)).length() > 0)
@@ -388,19 +391,6 @@ public class DisplayGUI extends JApplet
                           if((stringsForUse.get(i)).length() == 0) {
                               stringsForUse.remove(i);
                               numLinesRemoved++;
-                          }
-                      }
-
-                      
-                      for(int i = 0; i < stringsForUse.size()-1; i++) // Concatenation
-                      {
-                          String possibleOutput = "";
-                          possibleOutput +=  (stringsForUse.get(i)) + " " + (stringsForUse.get(i+1));
-                          if(possibleOutput.length() < linewidth)
-                          {
-                              String toModify = stringsForUse.get(i) + " " + (stringsForUse.get(i+1));
-                              stringsForUse.set(i, toModify);
-                              i++; // Skip to the next one
                           }
                       }
 
@@ -453,8 +443,11 @@ public class DisplayGUI extends JApplet
             	int spacestoadd =0;
             	int words=0;
             	int spacestoaddaftereachword =0;
-            	
-            	
+                String outputString = "";
+                for (int i = 0; i < listOfWords.size(); i++){
+                    System.out.println(listOfWords.get(i));
+                }
+
                 int checkIfFileChosen = fileChooser.showSaveDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
@@ -465,30 +458,43 @@ public class DisplayGUI extends JApplet
                         int linewidth = slider.getValue();
                         
                                     
-                        if(justificationchoice.getSelectedIndex() == 0) {  //Left justification 
-                			for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("%-" + linewidth + "s", stringsForUse.get(i) + "\n");
-                                outputText.println();
-                                outputText.println();
-                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing 
-                                	outputText.println();
-                                }
-                                
-                			}
-                			outputText.close();
-                			
-                        }
-                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification 
-                            for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("%" + linewidth + "s", stringsForUse.get(i));
-                                outputText.println();
-                                outputText.println();
-                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing 
-                                	outputText.println();
+                        if(justificationchoice.getSelectedIndex() == 0) {  //Left justification
+                            String line = "";
+                			for (int i = 0; i < listOfWords.size(); i++) {
+                			    if(listOfWords.get(i).isEmpty() != true) {
+                                    line += listOfWords.get(i) + " ";
+                                    if (line.length() > linewidth) {
+                                        outputText.println();
+                                        line = "";
+                                    }
+                                    if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
+                                        outputText.println();
+                                    }
+                                    outputString += listOfWords.get(i) + " ";
                                 }
                             }
+                            outputText.printf("%-" + linewidth + "s", outputString);
+                			outputText.println();
+                			outputText.close();
+                        }
+
+                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification 
+                            String line = "";
+                            for (int i = 0; i < listOfWords.size(); i++) {
+                                line += listOfWords.get(i) + " ";
+                                if(line.length() > linewidth) {
+                                    outputString += "\n";
+                                    line = "";
+                                }
+                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing
+                                    outputString += "\n";
+                                }
+                                outputString += listOfWords.get(i) + " ";
+                            }
+                            outputText.printf("%" + linewidth + "s", outputString + "\n");
                             outputText.close();
                         }
+
                         if (justificationchoice.getSelectedIndex() == 2)
                         {
                         	for (int i = 0; i < stringsForUse.size(); i++){
@@ -508,9 +514,9 @@ public class DisplayGUI extends JApplet
                 			outputText.close();
                     }
 
-                     catch(Exception ex) {
-                        ex.printStackTrace();
-                    }
+                     catch(Exception ex){
+                            ex.printStackTrace();
+                        }
                 }
                 else
                 {
