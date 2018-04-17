@@ -473,8 +473,13 @@ public class DisplayGUI extends JApplet
                                     
                         if(justificationchoice.getSelectedIndex() == 0) {  //Left justification 
                 			for (int i = 0; i < stringsForUse.size(); i++){
-                                outputText.printf("%-" + linewidth + "s", stringsForUse.get(i));
+                                outputText.printf("%-" + linewidth + "s", stringsForUse.get(i) + "\n");
                                 outputText.println();
+                                outputText.println();
+                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing 
+                                	outputText.println();
+                                }
+                                
                 			}
                 			outputText.close();
                 			
@@ -483,37 +488,33 @@ public class DisplayGUI extends JApplet
                             for (int i = 0; i < stringsForUse.size(); i++){
                                 outputText.printf("%" + linewidth + "s", stringsForUse.get(i));
                                 outputText.println();
+                                outputText.println();
+                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing 
+                                	outputText.println();
+                                }
                             }
                             outputText.close();
                         }
-                        if (justificationchoice.getSelectedIndex() == 2){
+                        if (justificationchoice.getSelectedIndex() == 2)
+                        {
                         	for (int i = 0; i < stringsForUse.size(); i++){
                         		while(i !=  (stringsForUse.size()-1))
                                 {
                                     String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
                                     for (int j=0; j < listOfWords.length; j++){
                                     	words += listOfWords[j].length();
-                                    }
-                      
+                                    }                   
                                     spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                    spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
-                                    
-                                    
-                                }
-                        		
-                        		
-                                
+                                    spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1                               
+                                }                          
                             }
                             outputText.close();
                         }
-                        if (spacingchoice.getSelectedIndex() ==0){ //single spacing 
-                        	
-                        }
-                        if (spacingchoice.getSelectedIndex() ==1){ //double spacing 
-                        	
-                        }
+                        
+                			outputText.close();
+                    }
 
-                    } catch(Exception ex) {
+                     catch(Exception ex) {
                         ex.printStackTrace();
                     }
                 }
