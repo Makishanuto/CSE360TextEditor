@@ -47,13 +47,13 @@ public class DisplayGUI extends JApplet
         save.setForeground(Color.blue);
         save.setBackground(Color.black);
 
-      
+
         JButton analysis = new JButton("Show Analysis");
         analysis.setFont(new Font("", Font.BOLD, 40));
         analysis.setForeground(Color.blue);
         analysis.setBackground(Color.black);
 
-        
+
         //Create Labels
         JLabel input = new JLabel("Input File" ,  SwingConstants.CENTER);
         input.setFont(new Font("", Font.PLAIN, 20));
@@ -79,7 +79,7 @@ public class DisplayGUI extends JApplet
         lNumLines.setOpaque(true);
         lNumLines.setBackground(Color.lightGray);
 
-        
+
         JLabel removed = new JLabel("Blank Lines Removed" ,SwingConstants.CENTER);
         removed.setFont(new Font("", Font.PLAIN, 20));
         removed.setForeground(Color.black);
@@ -131,7 +131,7 @@ public class DisplayGUI extends JApplet
         lLength.setForeground(Color.black);
         lLength.setOpaque(true);
         lLength.setBackground(Color.lightGray);
-        
+
         JLabel spaces = new JLabel("Number of Spaces " ,SwingConstants.CENTER);
         spaces.setFont(new Font("", Font.PLAIN, 20));
         spaces.setForeground(Color.black);
@@ -143,7 +143,7 @@ public class DisplayGUI extends JApplet
         lspaces.setForeground(Color.black);
         lspaces.setOpaque(true);
         lspaces.setBackground(Color.blue);
-        
+
         JLabel width = new JLabel("Line Width" ,SwingConstants.CENTER);
         width.setFont(new Font("", Font.PLAIN, 20));
         width.setForeground(Color.black);
@@ -155,14 +155,14 @@ public class DisplayGUI extends JApplet
         lwidth.setForeground(Color.black);
         lwidth.setOpaque(true);
         lwidth.setBackground(Color.lightGray);
-        
+
         JLabel LineWidth = new JLabel("Line Width", SwingConstants.CENTER);
         LineWidth.setFont(new Font("", ~Font.PLAIN, 20));
         LineWidth.setForeground(Color.black);
         LineWidth.setOpaque(true);
         LineWidth.setBackground(Color.lightGray);
 
-        
+
         JLabel justification = new JLabel("Justification", SwingConstants.CENTER);
         justification.setFont(new Font("", Font.PLAIN|Font.BOLD, 30));
         justification.setOpaque(true);
@@ -174,21 +174,21 @@ public class DisplayGUI extends JApplet
         spacing.setOpaque(true);
         spacing.setForeground(Color.black);
         spacing.setBackground(Color.lightGray);
-        
+
         JLabel analysis1 = new JLabel("Analysis", SwingConstants.CENTER);
         analysis1.setFont(new Font("", Font.PLAIN|Font.ITALIC, 35));
         analysis1.setOpaque(true);
         analysis1.setForeground(Color.black);
         analysis1.setBackground(Color.lightGray);
-        
-        
+
+
         //JSlider
         JSlider slider = new JSlider(0, 100, 50);
-        slider.setMajorTickSpacing(10); 
+        slider.setMajorTickSpacing(10);
         slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-   
+
         //CHoices
         Choice justificationchoice = new Choice();
         justificationchoice.setFont(new Font("", Font.PLAIN, 20));
@@ -197,16 +197,16 @@ public class DisplayGUI extends JApplet
         justificationchoice.addItem("Left");
         justificationchoice.addItem("Right");
         justificationchoice.addItem("Full");
-              
+
         Choice spacingchoice = new Choice();
         spacingchoice.setFont(new Font("", Font.PLAIN ,20));
         spacingchoice.setBackground(Color.lightGray);
         spacingchoice.setForeground(Color.black);
         spacingchoice.addItem("Single");
         spacingchoice.addItem("Double");
-        
-          
-      
+
+
+
         //create panels
         Panel options = new Panel();
         options.setLayout(new GridLayout(4, 2));
@@ -219,13 +219,13 @@ public class DisplayGUI extends JApplet
         options.add(spacingchoice);
         options.add(LineWidth);
         options.add(slider);
-        
+
         Panel middle = new Panel();
         middle.setLayout(new GridLayout(2, 1));
        // middle.setSize(800,200);
-        middle.add(analysis);	
+        middle.add(analysis);
         middle.add(analysis1);
-        
+
         Panel bottom = new Panel();
         bottom.setLayout(new GridLayout(8, 2));
        // bottom.setSize(800, 200);
@@ -245,14 +245,14 @@ public class DisplayGUI extends JApplet
         bottom.add(lspaces);
         bottom.add(width);
         bottom.add(lwidth);
-        
-        
-        
+
+
+
         frame.add(options, BorderLayout.NORTH);
         frame.add(middle, BorderLayout.CENTER);
         frame.add(bottom, BorderLayout.SOUTH);
-        
-        
+
+
 //------------------------------------------------------------------END OF GUI------------------------------------------------------------------------------
 
         final JFileChooser fileChooser  = new JFileChooser();
@@ -270,7 +270,7 @@ public class DisplayGUI extends JApplet
                 open.setBackground(Color.black);
             }
         });
-        
+
         save.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseEntered(java.awt.event.MouseEvent evt)
@@ -283,8 +283,8 @@ public class DisplayGUI extends JApplet
                 save.setBackground(Color.black);
             }
         });
-        
- 
+
+
         analysis.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseEntered(java.awt.event.MouseEvent evt)
@@ -314,17 +314,17 @@ public class DisplayGUI extends JApplet
                 int numWordsPerLine = 0;
                 int numLength = 0;
                 int numberofspaces = 0;
-                
-                
-                
+
+
+
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
-                	
+
                       File readInputtedFile = fileChooser.getSelectedFile();
                       String strInput = readInputtedFile.getName();
-                      
-                      
+
+
                     Scanner userInput = null;
                     try {
                         userInput = new Scanner(readInputtedFile);
@@ -339,7 +339,7 @@ public class DisplayGUI extends JApplet
                      }
                       userInput.close();
                     // Input has been read, added to stringsForUse
-                      
+
 
                       for(int i = 0; i < stringsForUse.size(); i++) // Check word count
                       {
@@ -355,16 +355,16 @@ public class DisplayGUI extends JApplet
                               numCount = listOfWords.size();
                           }
                       }
-                                    
+
                       numWordsPerLine = numCount / (stringsForUse.size());   //gets words per line
-                      
-                                          
+
+
                       int total = 0;
                       for(int i = 0; i < stringsForUse.size(); i++) { // Line Length
                           total += (stringsForUse.get(i)).length();
                       }
                       numLength = total / stringsForUse.size();
-                      
+
 
                       int linewidth = slider.getValue();
                       for(int i = 0; i < stringsForUse.size(); i++) // Make sure lines aren't a little too long
@@ -372,8 +372,8 @@ public class DisplayGUI extends JApplet
                           if((stringsForUse.get(i)).length() >linewidth) {
                           }
                       }
-                      
-                      
+
+
                       for(int i = 0; i < stringsForUse.size(); i++) // Get number of spaces
                       {
                     	  if((stringsForUse.get(i)).length() > 0) {
@@ -384,8 +384,8 @@ public class DisplayGUI extends JApplet
                               }
                           }
                       }
-                      
-                      
+
+
                       for(int i = 0; i < stringsForUse.size(); i++) // Check for and remove blank lines
                       {
                           if((stringsForUse.get(i)).length() == 0) {
@@ -402,7 +402,7 @@ public class DisplayGUI extends JApplet
                       lLength.setText(Integer.toString(numLength));
                       lspaces.setText(Integer.toString(numberofspaces));
                       lwidth.setText(Integer.toString(slider.getValue()));
-                      
+
                       fileName.setVisible(false);
                       lNumLines.setVisible(false);
                       lRemoved.setVisible(false);
@@ -453,14 +453,14 @@ public class DisplayGUI extends JApplet
                     try {
                         File writeFile = new File(fileChooser.getSelectedFile()+".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
-                        
+
                         int linewidth = slider.getValue();
                         if(justificationchoice.getSelectedIndex() == 0) {  //Left justification
                             String line = "";
                 			for (int i = 0; i < listOfWords.size(); i++) {
                 			    if(!listOfWords.get(i).isEmpty()) {
                                     line += listOfWords.get(i) + " ";
-                                    if (line.length() > linewidth) { 
+                                    if (line.length() > linewidth) {
                                         outputString += "%n";
                                         line = "";
                                     }
@@ -477,7 +477,7 @@ public class DisplayGUI extends JApplet
                 			outputText.close();
                         }
 
-                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification 
+                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification
                             String line = "";
                             for (int i = 0; i < listOfWords.size(); i++) {
                                 line += listOfWords.get(i) + " ";
@@ -502,28 +502,19 @@ public class DisplayGUI extends JApplet
                                     String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
                                     for (int j=0; j < listOfWords.length; j++){
                                     	words += listOfWords[j].length();
-                                    
+
                                     	spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                        spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1                               
+                                        spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
                                         for(int k = 0; k < spacestoaddaftereachword; k++){
-                                        	stringsForUse.set(k, stringsForUse.get(k) + " "); 
-                                    }                   
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                    } 
-=======
+                                        	stringsForUse.set(k, stringsForUse.get(k) + " ");
+                                    }
                                     spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
                                     spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
->>>>>>> parent of fdbfe97... Full justification testing
-=======
-                                    spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                    spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
->>>>>>> parent of fdbfe97... Full justification testing
-                                }                          
+
                             }
                             outputText.close();
                         }
-                        
+
                 			outputText.close();
                     }
 
