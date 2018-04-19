@@ -479,20 +479,25 @@ public class DisplayGUI extends JApplet
                         }
 
                         if (justificationchoice.getSelectedIndex() == 1){  //Right justification
-                            String line = "";
-                            for (int i = 0; i < listOfWords.size(); i++) {
-                                line += listOfWords.get(i) + " ";
-                                if(line.length() > linewidth) {
-                                    outputString += "\n";
-                                    line = "";
+                        	String line = "";
+                			for (int i = 0; i < listOfWords.size(); i++) {
+                			    if(!listOfWords.get(i).isEmpty()) {
+                                    line += listOfWords.get(i) + " ";
+                                    if (line.length() > linewidth) {
+                                        outputString += "%n";
+                                        line = "";
+                                    }
+
+                                    if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
+                                        outputString += "%n";
+                                    }
+                                    outputString += listOfWords.get(i) + " ";
                                 }
-                                if  (spacingchoice.getSelectedIndex() ==1){  //double spacing
-                                    outputString += "\n";
-                                }
-                                outputString += listOfWords.get(i) + " ";
                             }
-                            outputText.printf("%" + linewidth + "s", outputString + "\n");
-                            outputText.close();
+                            outputString = String.format(outputString);
+                            outputText.printf("%" + linewidth + "s", outputString);
+                			outputText.println();
+                			outputText.close();
                         }
 
                         if (justificationchoice.getSelectedIndex() == 2)
