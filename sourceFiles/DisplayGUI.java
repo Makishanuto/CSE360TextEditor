@@ -532,24 +532,87 @@ public class DisplayGUI extends JApplet
                             outputText.close();
                         }
 
-                        if (justificationchoice.getSelectedIndex() == 2)
+                        if (justificationchoice.getSelectedIndex() == 2) //full
                         {
-                        	for (int i = 0; i < stringsForUse.size(); i++) {
-                        		while(i !=  (stringsForUse.size()-1)) {
-                                    String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
-                                    for (int j = 0; j < listOfWords.length; j++) {
-                                        words += listOfWords[j].length();
-
-                                        spacestoadd = linewidth - words; //Column space- the number of characters in the words on each line
-                                        spacestoaddaftereachword = spacestoadd / (listOfWords.length - 1); //divided by number of words on line -1
-                                        for (int k = 0; k < spacestoaddaftereachword; k++) {
-                                            stringsForUse.set(k, stringsForUse.get(k) + " ");
-                                        }
-                                    }
-                                    spacestoadd = linewidth - words; //Column space- the number of characters in the words on each line
-                                    spacestoadd = spacestoadd / (listOfWords.length - 1); //divided by number of words on line -1
-                                }
+                        	ArrayList<String> result=new ArrayList<String>(); 
+                        	if(linewidth==0 || listOfWords.size()==0) 
+                            {
+                                  result.add("");
+                                  outputText.print(result);
                             }
+                            int i=0; 
+                            while(i<listOfWords.size())
+                      	{
+                      		ArrayList<String> subResult=new ArrayList<String>(); 
+                      		int length=listOfWords.get(i).length(); 
+                      		subResult.add(listOfWords.get(i));
+                      		int num=1; 
+                      		
+                      		while(i+1<listOfWords.size() && (length+1+listOfWords.get(i+1).length())<=linewidth)  //check the num of words in one line
+                      		{
+                      		length+=1+listOfWords.get(i+1).length(); 
+                      		subResult.add(listOfWords.get(i+1));
+                      		i++; 
+                      		num++; 
+                      		}
+                      		
+                      		StringBuffer sb=new StringBuffer(); 
+                      		if(num==1)     // only one word in one line and append all the empty space
+                      		{
+                      		int tempLength=linewidth-length; 
+                      		sb.append(subResult.get(0));
+                      		while(tempLength>0)
+                      		{
+                      		sb.append(" ");
+                      		tempLength--; 
+                      		}
+                      		}
+                      		else        //multiply words in one line 
+                      		{
+                      		if(i==(listOfWords.size()-1))  //if this line is the last line
+                      		{
+                      		int tempSp=linewidth-length-1; 
+                          		int lastLine=0; 
+                      		while(lastLine<num)
+                      		{
+                      		sb.append(subResult.get(lastLine));
+                              	lastLine++; 
+                      		sb.append(" ");
+                      		}
+                      		while(tempSp>0)
+                      		{
+                      		sb.append(" ");
+                              	tempSp--; 
+                      		}
+                      		}
+                      		else            //if it is not the last line
+                      		{
+                      		int space=(linewidth-length+num-1)/(num-1);  //counter the normal num of space in each gap
+                      		int counter=0; 
+                      		String empty=""; 
+                      		while(space>0)
+                      		{
+                      		empty+=" "; space--; 
+                      		}
+                      		int extra=(linewidth-length+num-1)%(num-1); //extra space left
+                      		while(counter<num-1)
+                      		{
+                      		sb.append(subResult.get(counter));
+                      		sb.append(empty);
+                      		if(extra>0)
+                      		{
+                      		sb.append(" "); extra--;  //assign one extra space from left
+                      		}
+                      		counter++; 
+                      		}
+                      		sb.append(subResult.get(counter));  
+                      		}
+                      		}
+                      		result.add(sb.toString());    //put the line in the result list
+                          		i++; 
+                      		}
+                      		
+                            outputText.print(result);
                             outputText.close();
                         }
                     }
