@@ -16,6 +16,7 @@ import java.io.*; // File
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -342,19 +343,35 @@ public class DisplayGUI extends JApplet
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
-                        	  //listOfWords = (stringsForUse.get(i)).split("\\s+");
-                              //numCount += listOfWords.length;
-                              List<String> wordsInLine = Arrays.asList((stringsForUse.get(i)).split("\\s+"));
-          
-                              listOfWords.addAll(wordsInLine);
-                              numCount += listOfWords.size();
+                        	  String[] list = (stringsForUse.get(i)).split("\\s+");
+                              numCount += list.length;
+                              
+                              /*
+                              for(int j=0; j< list.length; j++){
+                            	  System.out.println(list[j]);
+                              }
+                              
+                              //Collections.addAll(listOfWords, list);
+                              
+                              if(list.length < listOfWords.size())
+                              {
+                            	  System.out.println("TRUE");
+                            	  System.out.println(list.length);
+                            	  System.out.println(listOfWords.size());
+                              }
+                              
+                              for(int j=0; j< listOfWords.size(); j++){
+                            	  System.out.println(listOfWords.get(j));
+                              }
+                              */
+                              
+                              
                           }
                       }
                                     
                       numWordsPerLine = numCount / (stringsForUse.size());   //gets words per line
                       
-
-                      
+                                          
                       int total = 0;
                       for(int i = 0; i < stringsForUse.size(); i++) { // Line Length
                           total += (stringsForUse.get(i)).length();
@@ -463,7 +480,7 @@ public class DisplayGUI extends JApplet
                 			for (int i = 0; i < listOfWords.size(); i++) {
                 			    if(listOfWords.get(i).isEmpty() != true) {
                                     line += listOfWords.get(i) + " ";
-                                    if (line.length() > linewidth) {
+                                    if (line.length() > linewidth) { 
                                         outputText.println();
                                         line = "";
                                     }
