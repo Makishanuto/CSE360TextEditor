@@ -519,11 +519,12 @@ public class DisplayGUI extends JApplet
                                     String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
                                     for (int j=0; j < listOfWords.length; j++){
                                     	words += listOfWords[j].length();
+                                    
+                                    	spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
+                                        spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1                               
+                                        for(int k = 0; k < spacestoaddaftereachword; k++){
+                                        	stringsForUse.set(k, stringsForUse.get(k) + " "); 
                                     }                   
-                                    spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                    spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1                               
-                                   for(int k = 0; k < stringsForUse.size(); k++){
-                                    	stringsForUse.set(k, stringsForUse.get(k) + " "); 
                                     } 
                                 }                          
                             }
