@@ -509,7 +509,12 @@ public class DisplayGUI extends JApplet
                                         	stringsForUse.set(k, stringsForUse.get(k) + " "); 
                                     }                   
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     } 
+=======
+                                    spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
+                                    spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
+>>>>>>> parent of fdbfe97... Full justification testing
 =======
                                     spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
                                     spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
