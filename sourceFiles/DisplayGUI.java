@@ -442,6 +442,7 @@ public class DisplayGUI extends JApplet
             	//variables
             	int spacestoadd =0;
             	int words=0;
+            	int spacestoaddaftereachword = 0;
                 String outputString = "";
                 for (int i = 0; i < listOfWords.size(); i++){
                     System.out.println(listOfWords.get(i));
@@ -451,7 +452,7 @@ public class DisplayGUI extends JApplet
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
                 {
                     try {
-                        File writeFile = new File(fileChooser.getSelectedFile()+".txt");
+                        File writeFile = new File(fileChooser.getSelectedFile() + ".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
 
                         int linewidth = slider.getValue();
@@ -496,31 +497,28 @@ public class DisplayGUI extends JApplet
 
                         if (justificationchoice.getSelectedIndex() == 2)
                         {
-                        	for (int i = 0; i < stringsForUse.size(); i++){
-                        		while(i !=  (stringsForUse.size()-1))
-                                {
+                        	for (int i = 0; i < stringsForUse.size(); i++) {
+                        		while(i !=  (stringsForUse.size()-1)) {
                                     String[] listOfWords = (stringsForUse.get(i)).split("\\s+");
-                                    for (int j=0; j < listOfWords.length; j++){
-                                    	words += listOfWords[j].length();
+                                    for (int j = 0; j < listOfWords.length; j++) {
+                                        words += listOfWords[j].length();
 
-                                    	spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                        spacestoaddaftereachword = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
-                                        for(int k = 0; k < spacestoaddaftereachword; k++){
-                                        	stringsForUse.set(k, stringsForUse.get(k) + " ");
+                                        spacestoadd = linewidth - words; //Column space- the number of characters in the words on each line
+                                        spacestoaddaftereachword = spacestoadd / (listOfWords.length - 1); //divided by number of words on line -1
+                                        for (int k = 0; k < spacestoaddaftereachword; k++) {
+                                            stringsForUse.set(k, stringsForUse.get(k) + " ");
+                                        }
                                     }
-                                    spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
-                                    spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
-
+                                    spacestoadd = linewidth - words; //Column space- the number of characters in the words on each line
+                                    spacestoadd = spacestoadd / (listOfWords.length - 1); //divided by number of words on line -1
+                                }
                             }
                             outputText.close();
                         }
-
-                			outputText.close();
                     }
-
-                     catch(Exception ex){
-                            ex.printStackTrace();
-                        }
+                    catch(Exception ex){
+                        ex.printStackTrace();
+                    }
                 }
                 else
                 {
@@ -529,7 +527,6 @@ public class DisplayGUI extends JApplet
             }
         });
        // newmaster.add(master);
-
     }
 
     public void paint(Graphics g)
