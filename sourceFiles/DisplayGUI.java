@@ -306,6 +306,7 @@ public class DisplayGUI extends JApplet
             {
             	stringsForUse.clear();
             	listOfWords.clear();
+            	System.out.println(listOfWords.size());
                 // variables
                 int numLines = 0;
                 int numLinesRemoved = 0;
@@ -313,7 +314,8 @@ public class DisplayGUI extends JApplet
                 int numWordsPerLine = 0;
                 int numLength = 0;
                 int numberofspaces = 0;
-            
+                
+                
                 
                 int checkIfFileChosen = fileChooser.showOpenDialog(DisplayGUI.this);
                 if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
@@ -326,7 +328,8 @@ public class DisplayGUI extends JApplet
                     Scanner userInput = null;
                     try {
                         userInput = new Scanner(readInputtedFile);
-                    } catch (FileNotFoundException ex) {
+                    }
+                    catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
                     while(userInput.hasNextLine())
@@ -342,29 +345,14 @@ public class DisplayGUI extends JApplet
                       {
                           if((stringsForUse.get(i)).length() > 0)
                           {
-                        	  String[] list = (stringsForUse.get(i)).split("\\s+");
-                              numCount += list.length;
-                              
-                              /*
-                              for(int j=0; j< list.length; j++){
-                            	  System.out.println(list[j]);
+                              List<String> wordsInLine = Arrays.asList((stringsForUse.get(i)).split("\\s+"));
+                              listOfWords.addAll(wordsInLine);
+                              for(int j = 0; j < listOfWords.size(); j++) {
+                                  if (listOfWords.get(j).isEmpty()) {
+                                      listOfWords.remove(j);
+                                  }
                               }
-                              
-                              //Collections.addAll(listOfWords, list);
-                              
-                              if(list.length < listOfWords.size())
-                              {
-                            	  System.out.println("TRUE");
-                            	  System.out.println(list.length);
-                            	  System.out.println(listOfWords.size());
-                              }
-                              
-                              for(int j=0; j< listOfWords.size(); j++){
-                            	  System.out.println(listOfWords.get(j));
-                              }
-                              */
-                              
-                              
+                              numCount = listOfWords.size();
                           }
                       }
                                     
@@ -387,17 +375,13 @@ public class DisplayGUI extends JApplet
                       
                       
                       for(int i = 0; i < stringsForUse.size(); i++) // Get number of spaces
-                      {        
-                    	  
-                    	  if((stringsForUse.get(i)).length() > 0)
-                          {
-                    		  if((stringsForUse.get(i)).length() >linewidth) { //if one word is over max characters. 
-                    			  numberofspaces += 0;
+                      {
+                    	  if((stringsForUse.get(i)).length() > 0) {
+                    		  for(int charIndex = 0; charIndex < (stringsForUse.get(i)).length(); charIndex++) {
+                    		      if((stringsForUse.get(i)).charAt(charIndex) == ' ') {
+                    		          numberofspaces++;
+                                  }
                               }
-                    		  else {
-                    	          
-                    	          numberofspaces +=  linewidth - stringsForUse.get(i).replace(" ", "").length();
-                    		  }
                           }
                       }
                       
@@ -458,7 +442,6 @@ public class DisplayGUI extends JApplet
             	//variables
             	int spacestoadd =0;
             	int words=0;
-            	int spacestoaddaftereachword =0;
                 String outputString = "";
                 for (int i = 0; i < listOfWords.size(); i++){
                     System.out.println(listOfWords.get(i));
@@ -472,23 +455,23 @@ public class DisplayGUI extends JApplet
                         PrintWriter outputText = new PrintWriter(writeFile);
                         
                         int linewidth = slider.getValue();
-                        
-                                    
                         if(justificationchoice.getSelectedIndex() == 0) {  //Left justification
                             String line = "";
                 			for (int i = 0; i < listOfWords.size(); i++) {
-                			    if(listOfWords.get(i).isEmpty() != true) {
+                			    if(!listOfWords.get(i).isEmpty()) {
                                     line += listOfWords.get(i) + " ";
                                     if (line.length() > linewidth) { 
-                                        outputText.println();
+                                        outputString += "%n";
                                         line = "";
                                     }
+
                                     if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
-                                        outputText.println();
+                                        outputString += "%n";
                                     }
                                     outputString += listOfWords.get(i) + " ";
                                 }
                             }
+                            outputString = String.format(outputString);
                             outputText.printf("%-" + linewidth + "s", outputString);
                 			outputText.println();
                 			outputText.close();
@@ -525,7 +508,12 @@ public class DisplayGUI extends JApplet
                                         for(int k = 0; k < spacestoaddaftereachword; k++){
                                         	stringsForUse.set(k, stringsForUse.get(k) + " "); 
                                     }                   
+<<<<<<< HEAD
                                     } 
+=======
+                                    spacestoadd = linewidth-words; //Column space- the number of characters in the words on each line
+                                    spacestoadd = spacestoadd / ( listOfWords.length -1 ); //divided by number of words on line -1
+>>>>>>> parent of fdbfe97... Full justification testing
                                 }                          
                             }
                             outputText.close();
@@ -545,6 +533,7 @@ public class DisplayGUI extends JApplet
             }
         });
        // newmaster.add(master);
+
     }
 
     public void paint(Graphics g)
