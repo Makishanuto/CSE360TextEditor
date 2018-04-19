@@ -28,12 +28,11 @@
       <file leaf-file-name="DisplayGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sourceFiles/DisplayGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="476" column="49" lean-forward="false" selection-start-line="476" selection-start-column="49" selection-end-line="476" selection-end-column="49" />
+            <state relative-caret-position="487">
+              <caret line="377" column="22" lean-forward="false" selection-start-line="377" selection-start-column="22" selection-end-line="377" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#529#537#0" expanded="true" />
-                <element signature="e#594#602#0" expanded="true" />
+                <element signature="e#559#567#0" expanded="true" />
+                <element signature="e#624#632#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,6 +92,7 @@
       <find>stringsForUse</find>
       <find>stringsforuse</find>
       <find>size()-1</find>
+      <find>listOfWords</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,8 +146,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,21 +153,13 @@
               <item name="CSE360Proj" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSE360Proj" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CSE360Proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE360Proj" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE360Proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE360Proj" type="462c0819:PsiDirectoryNode" />
-              <item name="sourceFiles" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,12 +328,14 @@
       <workItem from="1521146508231" duration="3579000" />
       <workItem from="1521150485909" duration="1016000" />
       <workItem from="1522355240369" duration="103000" />
-      <workItem from="1523996604876" duration="4398000" />
+      <workItem from="1523996604876" duration="4420000" />
+      <workItem from="1524144529617" duration="2851000" />
+      <workItem from="1524122413508" duration="340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16543000" />
+    <option name="totallyTimeSpent" value="19756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -358,7 +350,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3319194" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3319194" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -386,11 +378,90 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sourceFiles/DisplayGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6511">
+          <caret line="383" column="68" lean-forward="false" selection-start-line="383" selection-start-column="68" selection-end-line="383" selection-end-column="68" />
+          <folding>
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CSE360Proj.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourceFiles/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#68#69#0" expanded="true" />
+            <element signature="e#100#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.desktop/sun/applet/AppletClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3706">
+          <caret line="218" column="0" lean-forward="false" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9537">
+          <caret line="561" column="40" lean-forward="false" selection-start-line="561" selection-start-column="40" selection-end-line="561" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sourceFiles/DisplayGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8092">
+          <caret line="476" column="49" lean-forward="false" selection-start-line="476" selection-start-column="49" selection-end-line="476" selection-end-column="49" />
+          <folding>
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CSE360Proj.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -442,9 +513,8 @@
         <state relative-caret-position="3247">
           <caret line="191" column="8" lean-forward="false" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -500,9 +570,8 @@
         <state relative-caret-position="2278">
           <caret line="134" column="26" lean-forward="true" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -547,9 +616,8 @@
         <state relative-caret-position="3400">
           <caret line="200" column="22" lean-forward="false" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -616,9 +684,8 @@
         <state relative-caret-position="408">
           <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -663,9 +730,8 @@
         <state relative-caret-position="1139">
           <caret line="67" column="55" lean-forward="false" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -765,12 +831,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sourceFiles/DisplayGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="476" column="49" lean-forward="false" selection-start-line="476" selection-start-column="49" selection-end-line="476" selection-end-column="49" />
+        <state relative-caret-position="487">
+          <caret line="377" column="22" lean-forward="false" selection-start-line="377" selection-start-column="22" selection-end-line="377" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#529#537#0" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
+            <element signature="e#559#567#0" expanded="true" />
+            <element signature="e#624#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
