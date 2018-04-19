@@ -449,81 +449,49 @@ public class DisplayGUI extends JApplet
                 }
 
                 int checkIfFileChosen = fileChooser.showSaveDialog(DisplayGUI.this);
-                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION)
-                {
+                if(checkIfFileChosen == JFileChooser.APPROVE_OPTION) {
                     try {
                         File writeFile = new File(fileChooser.getSelectedFile() + ".txt");
                         PrintWriter outputText = new PrintWriter(writeFile);
 
                         int linewidth = slider.getValue();
-                        if(justificationchoice.getSelectedIndex() == 0) {  //Left justification
+                        if (justificationchoice.getSelectedIndex() == 0) {  //Left justification
                             String line = "";
-                			for (int i = 0; i < listOfWords.size(); i++) {
-                			    if(!listOfWords.get(i).isEmpty()) {
+                            for (int i = 0; i < listOfWords.size(); i++) {
+                                if (!listOfWords.get(i).isEmpty()) {
                                     line += listOfWords.get(i) + " ";
-                                    /* DEBUGGING
-                                    System.out.println("Line Width: " + linewidth);
 
-                                    System.out.println("Line length: " + line.length() );
-                                    System.out.println("Index: " + i);
-                                    System.out.println("Word: " + listOfWords.get(i));
-                                    System.out.println("Line to test: " + String.format(line));
-                                    */
                                     if (line.length() > linewidth) {
                                         outputString += "%n";
                                         line = listOfWords.get(i);
-                                        // DEBUGGING
-                                        // System.out.println("Too long: " +   line.length());
-                                        // System.out.println("String at detection: " + String.format(outputString));
 
                                         if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
                                             outputString += "%n";
                                         }
                                     }
                                     outputString += listOfWords.get(i) + " ";
-                                    /* DEBUGGING
-                                    System.out.println("String after detection: " + String.format(outputString));
-                                    System.out.println();
-                                    System.out.println();
-                                    */
                                 }
                             }
                             outputString = String.format(outputString);
                             outputText.printf("%-" + linewidth + "s", outputString);
-                			outputText.println();
-                			outputText.close();
+                            outputText.println();
+                            outputText.close();
                         }
 
-                        if (justificationchoice.getSelectedIndex() == 1){  //Right justification
+                        if (justificationchoice.getSelectedIndex() == 1) {  //Right justification
                             String line = "";
                             for (int i = 0; i < listOfWords.size(); i++) {
-                                if(!listOfWords.get(i).isEmpty()) {
+                                if (!listOfWords.get(i).isEmpty()) {
                                     line += listOfWords.get(i) + " ";
-                                    /* DEBUGGING
-                                    System.out.println("Line Width: " + linewidth);
-
-                                    System.out.println("Line length: " + line.length() );
-                                    System.out.println("Index: " + i);
-                                    System.out.println("Word: " + listOfWords.get(i));
-                                    System.out.println("Line to test: " + String.format(line));
-                                    */
                                     if (line.length() > linewidth) {
                                         outputString += "%n";
                                         line = listOfWords.get(i);
-                                        // DEBUGGING
-                                        // System.out.println("Too long: " +   line.length());
-                                        // System.out.println("String at detection: " + String.format(outputString));
-
                                         if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
                                             outputString += "%n";
                                         }
                                     }
                                     outputString += listOfWords.get(i) + " ";
-                                    /* DEBUGGING
-                                    System.out.println("String after detection: " + String.format(outputString));
-                                    System.out.println();
-                                    System.out.println();
-                                    */
+
                                 }
                             }
                             outputString = String.format(outputString);
@@ -534,93 +502,56 @@ public class DisplayGUI extends JApplet
 
                         if (justificationchoice.getSelectedIndex() == 2) //full
                         {
-                        	ArrayList<String> result=new ArrayList<String>(); 
-                        	if(linewidth==0 || listOfWords.size()==0) 
-                            {
-                                  result.add("");
-                                  outputText.print(result);
+                            String line = "";
+                            String previousLine = "";
+                            int numberOfWordsInLine = 0;
+                            for (int i = 0; i < listOfWords.size(); i++) {
+                                line += listOfWords.get(i) + " ";
+
+                                if (line.length() > linewidth) {
+                                    int distanceBetweenLinewidth = linewidth - previousLine.length(); // Calculate missing characters
+                                    int missingSpaces = distanceBetweenLinewidth / numberOfWordsInLine;
+
+                                    numberOfWordsInLine = 0;
+                                    line = listOfWords.get(i);
+                                    String spacesString = "";
+                                    for(int j = 0; j <= missingSpaces; j++) {
+                                        spacesString += " "; // So we add a certain amount of spaces
+                                    }
+                                    previousLine = previousLine.replace(" ", spacesString); // Replace all current spaces in the line with the following
+                                    outputString += previousLine + "%n"; // Append
+                                    if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
+                                        outputString += "%n";
+                                    }
+                                }
+                                previousLine = line;
+                                numberOfWordsInLine++;
+                                if(i == listOfWords.size() -1) { // if it ends
+                                    if ((previousLine.length() + listOfWords.get(i).length()) > linewidth) {
+                                        outputString += "%n";
+                                        outputString += listOfWords.get(i);
+                                    } else {
+                                        previousLine += listOfWords.get(i);
+                                        int missingCharacters = linewidth - previousLine.length();
+                                        int missingSpaces = missingCharacters / (numberOfWordsInLine + 1);
+                                        String spacedString = "";
+                                        for (int k = 0; k <= missingSpaces; k++) {
+                                            spacedString += " ";
+                                        }
+                                        previousLine = previousLine.replace(" ", spacedString);
+                                        outputString += previousLine;
+                                    }
+                                }
                             }
-                            int i=0; 
-                            while(i<listOfWords.size())
-                      	{
-                      		ArrayList<String> subResult=new ArrayList<String>(); 
-                      		int length=listOfWords.get(i).length(); 
-                      		subResult.add(listOfWords.get(i));
-                      		int num=1; 
-                      		
-                      		while(i+1<listOfWords.size() && (length+1+listOfWords.get(i+1).length())<=linewidth)  //check the num of words in one line
-                      		{
-                      		length+=1+listOfWords.get(i+1).length(); 
-                      		subResult.add(listOfWords.get(i+1));
-                      		i++; 
-                      		num++; 
-                      		}
-                      		
-                      		StringBuffer sb=new StringBuffer(); 
-                      		if(num==1)     // only one word in one line and append all the empty space
-                      		{
-                      		int tempLength=linewidth-length; 
-                      		sb.append(subResult.get(0));
-                      		while(tempLength>0)
-                      		{
-                      		sb.append(" ");
-                      		tempLength--; 
-                      		}
-                      		}
-                      		else        //multiply words in one line 
-                      		{
-                      		if(i==(listOfWords.size()-1))  //if this line is the last line
-                      		{
-                      		int tempSp=linewidth-length-1; 
-                          		int lastLine=0; 
-                      		while(lastLine<num)
-                      		{
-                      		sb.append(subResult.get(lastLine));
-                              	lastLine++; 
-                      		sb.append(" ");
-                      		}
-                      		while(tempSp>0)
-                      		{
-                      		sb.append(" ");
-                              	tempSp--; 
-                      		}
-                      		}
-                      		else            //if it is not the last line
-                      		{
-                      		int space=(linewidth-length+num-1)/(num-1);  //counter the normal num of space in each gap
-                      		int counter=0; 
-                      		String empty=""; 
-                      		while(space>0)
-                      		{
-                      		empty+=" "; space--; 
-                      		}
-                      		int extra=(linewidth-length+num-1)%(num-1); //extra space left
-                      		while(counter<num-1)
-                      		{
-                      		sb.append(subResult.get(counter));
-                      		sb.append(empty);
-                      		if(extra>0)
-                      		{
-                      		sb.append(" "); extra--;  //assign one extra space from left
-                      		}
-                      		counter++; 
-                      		}
-                      		sb.append(subResult.get(counter));  
-                      		}
-                      		}
-                      		result.add(sb.toString());    //put the line in the result list
-                          		i++; 
-                      		}
-                      		
-                            outputText.print(result);
+                            outputString = String.format(outputString);
+                            outputText.printf("%-" + linewidth + "s", outputString);
+                            outputText.println();
                             outputText.close();
                         }
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                }
-                else
+                } else
                 {
                     System.out.println("User cancelled.");
                 }
