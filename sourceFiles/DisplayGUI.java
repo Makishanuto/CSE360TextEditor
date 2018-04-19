@@ -486,16 +486,19 @@ public class DisplayGUI extends JApplet
                                     if (line.length() > linewidth) {
                                         outputString += "%n";
                                         line = listOfWords.get(i);
-                                        if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
-                                            outputString += "%n";
-                                        }
                                     }
                                     outputString += listOfWords.get(i) + " ";
-
                                 }
                             }
                             outputString = String.format(outputString);
-                            outputText.printf("%" + linewidth + "s", outputString);
+                            String outputStringList[] = outputString.split("\\r?\\n");
+                            for(String output : outputStringList) {
+                                outputText.printf("%" + linewidth + "s", output);
+                                outputText.println();
+                                if (spacingchoice.getSelectedIndex() == 1) {  //double spacing
+                                    outputText.println();
+                                }
+                            }
                             outputText.println();
                             outputText.close();
                         }
